@@ -36,7 +36,7 @@ sleepytime = 900
 data_dir = os.getcwd()
 #data_dir = '/mnt/data/catch/'
 
-nSpots = 22
+nSpots = 14
 monthlies = []
 handicaps = []
 

@@ -1,10 +1,10 @@
-import json
+from json import load as jl
 
 def initCams( config_fname, t2occ=60 ):
     
     # Read spot config file
     with open(config_fname) as f:
-        cams = json.load(f)
+        cams = jl(f)
     
     default = {
             'nEdges': 0,

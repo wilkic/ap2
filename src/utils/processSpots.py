@@ -1,4 +1,4 @@
-from shutil import copyfile
+from shutil import copyfile as cp
 import time
 
 import os, sys
@@ -8,7 +8,7 @@ import notifications as notify
 
 def try_copy( src, dest ):
     try:
-        copyfile( src, dest )
+        cp( src, dest )
         return True
     except IOError as e:
         print "OOPs... that was a bad copy"

@@ -6,13 +6,22 @@ def initCams( config_fname, t2occ=60 ):
     with open(config_fname) as f:
         cams = jl(f)
     
-    default = {
+    spotProperties = {
             'nEdges': 0,
             'timePresent': 0,
             'timeOccupied': 0,
             'occupationStartTime': 0,
             'occupationEndTime': 0,
-            'occupationThresh': t2occ
+            'occupationThresh': t2occ,
+            'paid': 0,
+            'payStartTime': '',
+            'payEndTime': '',
+            'lps': '',
+            'lpn': '',
+            'monthly': 0,
+            'handicap': 0,
+            'violation': 0,
+            'failedDetection': 0
     }
     
     for i, c in cams.iteritems():

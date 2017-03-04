@@ -1,30 +1,7 @@
 #!/usr/bin/env python
 
-import os
-
-import numpy as np
-import pylab
-
-import matplotlib.pyplot as plt
-
-import time
-
-import sys
-
-import traceback
-
-sys.path.append(os.getcwd())
-import dataRecording as log
-import loadCameras as lc
-import processSpots
-import processCameras
-import processApi
-import writeTable
-import writeDemo
-
-sys.path.append("..")
-import notifications as notify
-import get_image as gi
+import utils.cams as Cams
+import utils.dataRecording as log
 
 ##########################################
 ##########################################
@@ -34,7 +11,6 @@ import get_image as gi
 sleepytime = 900
 
 data_dir = os.getcwd()
-#data_dir = '/mnt/data/catch/'
 
 nSpots = 14
 monthlies = []
@@ -52,7 +28,15 @@ toSpam = ['test@test.com']
 os.environ['TZ'] = 'US/Eastern'
 time.tzset()
 
-cameras = lc.loadCameras( time.time(), threshSurf, edgeLims, timePresentBeforeOccupied )
+# Read config file 
+with open(config_fname) as f:
+    camConfig = jl(f)
+
+# Initialize the cameras
+cams = {}
+for c, cam in camConfig.iteritems():
+    cams[cam['number']] = Camera( cam )
+
 
 # When getting the latest image, move it to a directory
 # for processing... then delete it when done.
@@ -83,6 +67,23 @@ spots = processSpots.create(nSpots,monthlies,handicaps,cameras,ip)
 while True:
     
     try:
+        
+        # Get edges per spot
+        cams.analyze()
+
+        # Determine presence based on edges
+        cams.determine_all_presence()
+
+        # Evaluate if presence persistence merits occupation
+        cams.
+
+        # Get spot payment status
+
+        # Determine violation
+
+        # Update table
+
+        # Log all data
 
         processCameras.processCameras( cameras, dirs, toErr, toSpam )
         

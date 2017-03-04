@@ -1,4 +1,3 @@
-from shutil import copyfile as cp
 import time
 
 import os, sys
@@ -6,73 +5,6 @@ sys.path.append("..")
 import notifications as notify
 
 
-def try_copy( src, dest ):
-    try:
-        cp( src, dest )
-        return True
-    except IOError as e:
-        print "OOPs... that was a bad copy"
-        print e
-        return False
-
-
-def create( nSpots, monthlies, handicaps, cameras, ip ):
-
-    defaultProperties = {
-        'paid': 0,
-        'payStartTime': '',
-        'payEndTime': '',
-        'lps': '',
-        'lpn': '',
-        'monthly': 0,
-        'timePresent': 0,
-        'timeOccupied': 0,
-        'occupationStartTime': 0,
-        'occupationEndTime': 0,
-        'violation': False,
-        'failedDetection': False,
-        'faultyCamera': False,
-        'handicap': False,
-        'url': '',
-    }
-
-    spots = {prop:defaultProperties.copy() for prop in range(1,nSpots+1)}
-
-    # Assign the monthlies
-    for i in monthlies:
-        spots[i]['monthly'] = 1
-        spots[i]['paid'] = 0
-    
-    # Assign the handis
-    for i in handicaps:
-        spots[i]['handicap'] = 1
-    
-    # Assign each camera and spot the camera's url
-    for c, camera in cameras.iteritems():
-        
-        for spot in camera['spots']:
-            
-            sn = spot['number']
-            url = 'http://' + ip + ':' + str(camera['port'])
-            url += '/cgi-bin/getsnapshot.cgi'
-            camera['url'] = url
-            spots[sn]['url'] = url
-
-    return spots
-
-def write( cameras, spots ):
-    
-    for c, camera in cameras.iteritems():
-        
-        for spot in camera['spots']:
-            
-            sn = spot['number']
-            spots[sn]['timePresent'] = spot['timePresent']
-            spots[sn]['timeOccupied'] = spot['timeOccupied']
-            spots[sn]['occupationStartTime'] = spot['occupationStartTime']
-            spots[sn]['occupationEndTime'] = spot['occupationEndTime']
-            spots[sn]['faultyCamera'] = camera['nFails'] > 0
-    return
 
 def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
 

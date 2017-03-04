@@ -9,7 +9,9 @@
                              [  56, 132],
                              [  22, 200],
                              [   0, 200]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 2,
@@ -17,7 +19,9 @@
                              [ 145, 140],
                              [ 140, 210],
                              [  40, 200]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 3,
@@ -25,7 +29,9 @@
                              [ 240, 145],
                              [ 260, 205],
                              [ 155, 210]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             }
         ]
     },
@@ -48,7 +54,9 @@
                              [ 175, 224],
                              [   0, 224],
                              [   0, 180]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             }
         ]
     },
@@ -63,7 +71,9 @@
                              [  56, 132],
                              [  22, 200],
                              [   0, 200]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 2,
@@ -71,7 +81,9 @@
                              [ 145, 140],
                              [ 140, 210],
                              [  40, 200]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 3,
@@ -79,7 +91,9 @@
                              [ 240, 145],
                              [ 260, 205],
                              [ 155, 210]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 4,
@@ -87,7 +101,9 @@
                              [ 320, 145],
                              [ 340, 174],
                              [ 262, 170]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 5,
@@ -95,7 +111,9 @@
                              [ 379, 150],
                              [ 392, 166],
                              [ 345, 166]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 6,
@@ -103,7 +121,9 @@
                              [78, 38],
                              [65, 48],
                              [31, 50]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 7,
@@ -111,7 +131,9 @@
                              [124, 39],
                              [114, 49],
                              [79, 50]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 8,
@@ -119,7 +141,9 @@
                              [167, 41],
                              [165, 54],
                              [125, 52]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 9,
@@ -127,7 +151,9 @@
                              [206, 45],
                              [213, 58],
                              [176, 54]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 10,
@@ -135,7 +161,9 @@
                              [247, 50],
                              [258, 65],
                              [224, 61]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 11,
@@ -143,7 +171,9 @@
                              [282, 55],
                              [303, 72],
                              [273, 66]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 12,
@@ -151,7 +181,9 @@
                              [316, 61],
                              [338, 79],
                              [316, 74]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 13,
@@ -159,7 +191,9 @@
                              [348, 68],
                              [373, 87],
                              [354, 83]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 14,
@@ -167,7 +201,9 @@
                              [373, 73],
                              [396, 91],
                             [ 384, 88]],
-                "base_nEdges": 0
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
             }
 
         ]

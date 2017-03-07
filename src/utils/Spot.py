@@ -13,7 +13,7 @@ class Spot:
     monthly = 0,
     handicap = 0,
     nEdges = 0,
-    timePresent = 0,
+    presenceStartTime = 0,
     timeOccupied = 0,
     occupationStartTime = 0,
     occupationEndTime = 0,
@@ -36,25 +36,50 @@ class Spot:
         monthly = spot_dict['monthly']
         handicap = spot_dict['handicap']
 
-
-###################
-###################
-###################
-
-def setSpotProp( cams, spotNum, prop, val ):
-
-    for c, cam in cams:
+    def update_occupation():
         
-        for s in cam['spots']:
+        if monthly or handicap:
+            return
+
+        tP = timePresent()
+        evaluate_occupation( tP )
+
+        
+    def evaluate_occupation(tP):
+        
+        # Present longer than thresh?
+        if tP > occupationThresh:
+            if not occupied:
+                occupied = True
+                occupationStartTime = now
+
+            timeOccupied = now - occupationStartTime
+        
+        # Was occupied, but no longer present
+        elif occupied:
+            occupationEndTime = now
+            occupied = False
+        
+        # Was not occupied, not present
+        else:
+            occupied = False
             
-            if s['number'] is spotNum:
-                s[prop] = val
-                return
-    
-    msg = 'Property %s not found in spots in cams' % prop
-    print msg
-    quit()
-    #notify.send_msg('Error',msg,toErr)
+        
+    def timePresent():
+        if presence():
+            tPresent = now - presenceStartTime
+        else
+            tPresent = 0
+            presenceStartTime = now
+        return tPresent
+
+    def presence():
+        # Edge based presence only
+        if nEdges > base_nEdges:
+            return True
+        else
+            return False
+
 
 
 

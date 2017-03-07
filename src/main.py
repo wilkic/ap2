@@ -12,14 +12,10 @@ sleepytime = 900
 
 data_dir = os.getcwd()
 
-nSpots = 14
-monthlies = []
-handicaps = []
+# Spot numbers is a list of ints
+spotNumbers = range(1,15)
 
-timePresentBeforeOccupied = 60
 violationThresh = 1200
-
-ip = "108.45.109.111"
 
 toForce = ['test@test.com']
 toErr = ['test@test.com']
@@ -28,15 +24,17 @@ toSpam = ['test@test.com']
 os.environ['TZ'] = 'US/Eastern'
 time.tzset()
 
+# Create the spots
+spots = {num:Spot().copy() for num in spotNumbers}
+
 # Read config file 
 with open(config_fname) as f:
     camConfig = jl(f)
 
-# Initialize the cameras
+# Initialize the cameras (and spot info) from config
 cams = {}
 for c, cam in camConfig.iteritems():
-    cams[cam['number']] = Camera( cam )
-
+    cams[cam['number']] = Camera( spots, cam )
 
 # When getting the latest image, move it to a directory
 # for processing... then delete it when done.
@@ -60,41 +58,42 @@ if not os.path.exists(ud):
 sld, cld, csd = log.setupDirs( data_dir )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
 
-# Create the list of spots
-spots = processSpots.create(nSpots,monthlies,handicaps,cameras,ip)
+
+######################################
+######################################
+######################################
+
+# BEGIN THE LOOP
+
+######################################
+######################################
+######################################
 
 #for index in range(0,3):
 while True:
     
     try:
         
-        # Get edges per spot
-        cams.analyze()
+        # Update spots info from cameras
+        for c, cam in cams.iteritems():
+            cam.analyze(spots)
 
-        # Determine presence based on edges
-        cams.determine_all_presence()
-
-        # Evaluate if presence persistence merits occupation
-        cams.
+        # Update presence
+        for s in spots.iteritems():
+            s.update_occupation()
 
         # Get spot payment status
+        payment.update(spots)
 
         # Determine violation
-
+        for s in spots.iteritems():
+            s.update_status()
+        
         # Update table
+        table.write(spots)
 
         # Log all data
-
-        processCameras.processCameras( cameras, dirs, toErr, toSpam )
-        
-        processSpots.write( cameras, spots )
-        
-        processApi.processApi( data_dir, spots, monthlies, toErr )
-        
-        processSpots.judge( spots, violationThresh, monthlies, toErr, toForce, cd, vd, ud )
-
-        writeTable.writeTable( spots )
-        writeDemo.writeTable( spots )
+        log.write(spots)
 
     except Exception, e:
         tb = traceback.format_exc()

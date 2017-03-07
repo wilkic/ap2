@@ -26,7 +26,7 @@ class Spot:
     violation = 0,
     failedDetection = 0
     
-    def __init__(self, s, t2occ=60)
+    def __init__(self, s, t2occ=60):
         init( s, t2occ )
 
     def init( self, spot_dict, t2occ=60 ):
@@ -82,4 +82,5 @@ class Spot:
 
 
 
-
+    def update_status():
+        

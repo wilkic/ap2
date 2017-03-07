@@ -1,5 +1,5 @@
 
-import sys
+from sys.stderr import write as errWrite
 import smtplib
 import getpass
 
@@ -30,7 +30,7 @@ def setup_server():
     try:
         server.login( sender, pwd )
     except smtplib.SMTPAuthenticationError as e:
-        sys.stderr.write("""
+        errWrite("""
         Warning: %s was caught while trying to authenticate
         with Gmail""" % (e))
         return None
@@ -66,7 +66,7 @@ def send_mean( mean, recipients ):
                                     recipients,
                                     msg.as_string() )
     except smtplib.SMTPDataError as e:
-        sys.stderr.write("""
+        errWrite("""
         Warning: %s was caught while trying to notify
         of mean = %f""" % (e,mean))
 
@@ -92,7 +92,7 @@ def send_msg( subject, message, recipients ):
                                     recipients,
                                     msg.as_string() )
     except smtplib.SMTPDataError as e:
-        sys.stderr.write("""
+        errWrite("""
         Warning: %s was caught while trying to notify
         with the following message:
         %s""" % (e,message))
@@ -121,7 +121,7 @@ def send_msg_with_jpg( subject, message, fname, recipients  ):
                                     recipients,
                                     msg.as_string() )
     except smtplib.SMTPDataError as e:
-        sys.stderr.write("""
+        errWrite("""
         Warning: 
         %s
         

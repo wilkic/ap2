@@ -2,6 +2,7 @@
 
 import utils.cams as Cams
 import utils.dataRecording as log
+from json import load as jl
 
 ##########################################
 ##########################################
@@ -35,6 +36,14 @@ with open(config_fname) as f:
 cams = {}
 for c, cam in camConfig.iteritems():
     cams[cam['number']] = Camera( spots, cam )
+
+# Read api config, pass to Payment for initialization
+payLog = os.path.join(os.getcwd,'pmAPI.log')
+apiConfigFname = 'cfg/apiConfig.json'
+with open(apiConfigFname) as f:
+    apiConfig = jl(f)
+payment = Payment( payLog, apiConfigi, toErr )
+
 
 # When getting the latest image, move it to a directory
 # for processing... then delete it when done.
@@ -92,7 +101,7 @@ while True:
         # Update table
         table.write(spots)
 
-        # Log all data
+        # Log spot data
         log.write(spots)
 
     except Exception, e:

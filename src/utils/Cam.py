@@ -1,4 +1,3 @@
-from json import load as jl
 
 ###################
 ###################
@@ -12,8 +11,8 @@ class Cam:
     edgeLimLo = 100
     edgeLimHi = 200
     
-    def __init__(self, s, c)
-        init( s, c )
+    def __init__(self, spots, cams)
+        init( spots, cams )
         return
 
     def init( self, Spots, cam_dict ):
@@ -32,7 +31,7 @@ class Cam:
 
         return
 
-    def analyze( Spots ):
+    def analyze( Spots, image=image_location ):
         
 	# Allow for image to be a filename or CV2 object
 	if isinstance(image, basestring):

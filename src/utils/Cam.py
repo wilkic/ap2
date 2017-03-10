@@ -1,3 +1,5 @@
+import cv2
+from numpy import zeros, where, shape
 
 ###################
 ###################
@@ -6,33 +8,37 @@
 class Cam:
     
     number = 0
-    image_location = "."
+    imageLocation = "."
     spots = []
     edgeLimLo = 100
     edgeLimHi = 200
     
-    def __init__(self, spots, cams)
-        init( spots, cams )
+    def __init__(self, s, cams):
+        self.init( s, cams )
         return
 
-    def init( self, Spots, cam_dict ):
-        number = cam_dict['number']
-        image_location = cam_dict['im_full_path']
+    def init( self, sl, cam_dict ):
+        self.number = cam_dict['number']
+        self.image_location = cam_dict['im_full_path']
+        self.spots = []
         for s in cam_dict['spots']:
             
             # Init spot class with config vals
-            spot = Spot( s )
+            n = s['number']
+            sl[s['number']].init( s )
             
-            # Write the spot into the spots dict
-            Spots[spot.number] = spot
-
             # Add spot number to list of cameras children spots
-            spots.append(spot.number)
-
+            self.spots.append(n)
+        
+        print "cam number  ", self.number
+        print "    spots ", self.spots
         return
 
-    def analyze( Spots, image=image_location ):
+    def analyze( self, Spots, image=None ):
         
+        if image is None:
+            image = self.imageLocation
+
 	# Allow for image to be a filename or CV2 object
 	if isinstance(image, basestring):
 	    im = cv2.imread(image)
@@ -40,16 +46,16 @@ class Cam:
 	    im = image
 
         # Get edges in image (use mask later)
-        edges = cv2.Canny( im, edgeLimLo, edgeLimHi )
+        edges = cv2.Canny( im, self.edgeLimLo, self.edgeLimHi )
 	
         # Loop over spots, writing number of edges for each
-        for sn in spots:
+        for sn in Spots:
             
             # Get the polygon vertices for the spot
             verts = Spots[sn].vertices
             
             # Make (boolean) mask for spot
-            mask = np.zeros((im.shape[0],im.shape[1]))
+            mask = zeros((im.shape[0],im.shape[1]))
             cv2.fillConvexPoly(mask,verts,1)
             bMask = mask.astype(bool)
             
@@ -58,8 +64,8 @@ class Cam:
             
             ### Get number of edges
             spotEdges = edges[bMask]
-            edgeInds = np.where(spotEdges == 255)
-            Spots[sn].nEdges = np.shape(edgeInds)[1]
+            edgeInds = where(spotEdges == 255)
+            Spots[sn].nEdges = shape(edgeInds)[1]
             
         return
 

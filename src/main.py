@@ -1,8 +1,18 @@
 #!/usr/bin/env python
 
-import utils.cams as Cams
+from utils.Spot import Spot
+from utils.Cam import Cam as Camera
+from utils.Payment import Payment
+from utils.notifications import send_msg as sm
 import utils.dataRecording as log
+import utils.table
 from json import load as jl
+
+import os
+import time
+import traceback
+
+from copy import copy as copy
 
 ##########################################
 ##########################################
@@ -18,31 +28,41 @@ spotNumbers = range(1,15)
 
 violationThresh = 1200
 
+config_fname = '../cfg/cam_config.json'
+
 toForce = ['test@test.com']
 toErr = ['test@test.com']
 toSpam = ['test@test.com']
 
 os.environ['TZ'] = 'US/Eastern'
+
+##########################################
+##########################################
+##########################################
+
 time.tzset()
 
 # Create the spots
-spots = {num:Spot().copy() for num in spotNumbers}
+spots = {num:Spot(num) for num in spotNumbers}
 
 # Read config file 
 with open(config_fname) as f:
     camConfig = jl(f)
 
 # Initialize the cameras (and spot info) from config
+#cams = {cam['number']:Camera(spots,cam) for c, cam in camConfig.iteritems()}
 cams = {}
 for c, cam in camConfig.iteritems():
-    cams[cam['number']] = Camera( spots, cam )
+    tc = Camera( spots, cam )
+    cams[cam['number']] = tc
+
 
 # Read api config, pass to Payment for initialization
-payLog = os.path.join(os.getcwd,'pmAPI.log')
-apiConfigFname = 'cfg/apiConfig.json'
+payLog = os.path.join(os.getcwd(),'pmAPI.log')
+apiConfigFname = '../cfg/apiConfig.json'
 with open(apiConfigFname) as f:
     apiConfig = jl(f)
-payment = Payment( payLog, apiConfigi, toErr )
+payment = Payment( payLog, apiConfig, toErr )
 
 
 # When getting the latest image, move it to a directory
@@ -65,8 +85,6 @@ if not os.path.exists(ud):
 
 # Put spot logs in their own dir
 sld, cld, csd = log.setupDirs( data_dir )
-dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
-
 
 ######################################
 ######################################
@@ -102,7 +120,8 @@ while True:
         table.write(spots)
 
         # Log spot data
-        log.write(spots)
+        for s in spots.iteritems():
+            log.logSpot(now,s,cld)
 
     except Exception, e:
         tb = traceback.format_exc()
@@ -117,7 +136,7 @@ while True:
         Traceback:
         %s""" % (time.asctime(),str(e),tb)
         print "%s\n\n%s" % (msg, str(e))
-        notify.send_msg('Error',msg,toErr)
+        sm('Error',msg,toErr)
         sys.exit()
 
     # Do it all over again, after some rest

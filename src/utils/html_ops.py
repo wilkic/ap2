@@ -1,6 +1,4 @@
 
-import textwrap
-
 def write_page( name, title, rrate, body ):
     
     meta = ''

@@ -46,7 +46,9 @@
                              [ 400, 100],
                              [ 400, 224],
                              [ 220, 224]],
-                "base_nEdges": 6
+                "base_nEdges": 6,
+                "monthly": 0,
+                "handicap": 0
             },
             {
                 "number": 5,

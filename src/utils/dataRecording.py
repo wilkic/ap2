@@ -2,7 +2,7 @@
 from os.path import join, exists
 from os import makedirs as mkdir
 from csv import writer as csv_writer
-from pprint import pprint.pprint as pp
+from pprint import pprint as pp
 
 
 ####

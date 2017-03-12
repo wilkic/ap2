@@ -9,3 +9,14 @@ def try_copy( src, dest ):
         print e
         return False
 
+from re import match
+from time import strptime, mktime
+
+def parse_ts( fname ):
+    with open(fname) as f:
+        s = f.read()
+    m = match(r".*\'(.*)\'",s)
+    tt = strptime(m.group(1),"%Y-%m-%d %H:%M:%S")
+    ts = mktime( tt )
+    return ts
+

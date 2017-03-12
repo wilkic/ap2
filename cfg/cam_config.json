@@ -2,6 +2,7 @@
     "cam1": {
         "number": 1,
         "im_full_path": "/home/acp/work/ggp/bpark/imgs/cam1.jpg",
+        "ts_full_path": "/home/acp/work/ggp/bpark/imgs/ts1.js",
         "spots": [
             {
                 "number": 1,
@@ -39,23 +40,83 @@
     "cam2": {
         "number": 2,
         "im_full_path": "/home/acp/work/ggp/bpark/imgs/cam2.jpg",
+        "ts_full_path": "/home/acp/work/ggp/bpark/imgs/ts2.js",
         "spots": [
             {
                 "number": 4,
-                "vertices": [[ 220,   0],
-                             [ 400, 100],
-                             [ 400, 224],
-                             [ 220, 224]],
+                "vertices": [[ 23, 186],
+                             [ 80, 173],
+                             [ 130, 210],
+                             [ 45, 210]],
                 "base_nEdges": 6,
                 "monthly": 0,
                 "handicap": 0
             },
             {
                 "number": 5,
-                "vertices": [[  40,  50],
-                             [ 175, 224],
-                             [   0, 224],
-                             [   0, 180]],
+                "vertices": [[ 90, 170],
+                             [ 130, 160],
+                             [ 175, 180],
+                             [ 120, 190]],
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 6,
+                "vertices": [[ 145, 150],
+                             [ 212, 152],
+                             [ 210, 180]],
+                "base_nEdges": 6,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 7,
+                "vertices": [[ 227.241935, 148.274194],
+                             [ 243.370968, 140.532258],
+                             [ 282.725806, 157.306452],
+                             [ 271.758065, 168.274194]],
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 8,
+                "vertices": [[ 257.564516, 141.822581],
+                             [ 274.983871, 136.661290],
+                             [ 362.725806, 156.016129],
+                             [ 356.919355, 163.758065]],
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 9,
+                "vertices": [[ 294.338710, 126.983871],
+                             [ 362.725806, 139.887097],
+                             [ 358.209677, 145.693548],
+                             [ 284.661290, 132.145161]],
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 10,
+                "vertices": [[ 300.790323, 103.758065],
+                             [ 353.048387, 113.435484],
+                             [ 347.887097, 115.370968],
+                             [ 302.080645, 108.274194]],
+                "base_nEdges": 0,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 11,
+                "vertices": [[ 316.919355, 99.2419],
+                             [ 360.790323, 108.919],
+                             [ 358.854839, 111.500],
+                             [ 307.887097, 103.758]],
                 "base_nEdges": 0,
                 "monthly": 0,
                 "handicap": 0
@@ -66,6 +127,7 @@
     "cam3": {
         "number": 3,
         "im_full_path": "/home/acp/work/ggp/bpark/imgs/cam3.jpg",
+        "ts_full_path": "/home/acp/work/ggp/bpark/imgs/ts3.js",
         "spots": [
             {
                 "number": 1,
@@ -98,27 +160,7 @@
                 "handicap": 0
             },
             {
-                "number": 4,
-                "vertices": [[ 255, 145],
-                             [ 320, 145],
-                             [ 340, 174],
-                             [ 262, 170]],
-                "base_nEdges": 0,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 5,
-                "vertices": [[ 333, 150],
-                             [ 379, 150],
-                             [ 392, 166],
-                             [ 345, 166]],
-                "base_nEdges": 0,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 6,
+                "number": 12,
                 "vertices": [[49, 38],
                              [78, 38],
                              [65, 48],
@@ -128,7 +170,7 @@
                 "handicap": 0
             },
             {
-                "number": 7,
+                "number": 13,
                 "vertices": [[90, 39],
                              [124, 39],
                              [114, 49],
@@ -138,7 +180,7 @@
                 "handicap": 0
             },
             {
-                "number": 8,
+                "number": 14,
                 "vertices": [[134, 40],
                              [167, 41],
                              [165, 54],
@@ -148,7 +190,7 @@
                 "handicap": 0
             },
             {
-                "number": 9,
+                "number": 15,
                 "vertices": [[176, 42],
                              [206, 45],
                              [213, 58],
@@ -158,7 +200,7 @@
                 "handicap": 0
             },
             {
-                "number": 10,
+                "number": 16,
                 "vertices": [[218, 47],
                              [247, 50],
                              [258, 65],
@@ -168,7 +210,7 @@
                 "handicap": 0
             },
             {
-                "number": 11,
+                "number": 17,
                 "vertices": [[260, 52],
                              [282, 55],
                              [303, 72],
@@ -178,7 +220,7 @@
                 "handicap": 0
             },
             {
-                "number": 12,
+                "number": 18,
                 "vertices": [[300, 59],
                              [316, 61],
                              [338, 79],
@@ -188,7 +230,7 @@
                 "handicap": 0
             },
             {
-                "number": 13,
+                "number": 19,
                 "vertices": [[333, 64],
                              [348, 68],
                              [373, 87],
@@ -198,7 +240,7 @@
                 "handicap": 0
             },
             {
-                "number": 14,
+                "number": 20,
                 "vertices": [[362, 70],
                              [373, 73],
                              [396, 91],

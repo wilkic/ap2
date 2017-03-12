@@ -5,7 +5,7 @@ from utils.Cam import Cam as Camera
 from utils.Payment import Payment
 from utils.notifications import send_msg as sm
 import utils.dataRecording as log
-import utils.table
+import utils.table as table
 from json import load as jl
 
 import os
@@ -13,6 +13,8 @@ import time
 import traceback
 
 from copy import copy as copy
+
+import ipdb
 
 ##########################################
 ##########################################
@@ -50,7 +52,6 @@ with open(config_fname) as f:
     camConfig = jl(f)
 
 # Initialize the cameras (and spot info) from config
-#cams = {cam['number']:Camera(spots,cam) for c, cam in camConfig.iteritems()}
 cams = {}
 for c, cam in camConfig.iteritems():
     tc = Camera( spots, cam )
@@ -96,50 +97,51 @@ sld, cld, csd = log.setupDirs( data_dir )
 ######################################
 ######################################
 
-#for index in range(0,3):
-while True:
+for index in range(0,1):
+#while True:
     
-    try:
-        
+#    try:
+        now = time.time
+
         # Update spots info from cameras
         for c, cam in cams.iteritems():
             cam.analyze(spots)
 
         # Update presence
-        for s in spots.iteritems():
-            s.update_occupation()
+        for s, spot in spots.iteritems():
+            spot.update_occupation()
 
         # Get spot payment status
         payment.update(spots)
 
         # Determine violation
-        for s in spots.iteritems():
-            s.update_status()
+        for s, spot in spots.iteritems():
+            spot.update_status( violationThresh, cd, vd, ud )
         
         # Update table
         table.write(spots)
 
         # Log spot data
-        for s in spots.iteritems():
-            log.logSpot(now,s,cld)
+        for s, spot in spots.iteritems():
+            log.logSpot(now,spot,cld)
 
-    except Exception, e:
-        tb = traceback.format_exc()
-        msg = """
-        %s
-        Catch is going offline due to user error !
-        Check my error logs for details...
-        
-        Exception:
-        %s
-        
-        Traceback:
-        %s""" % (time.asctime(),str(e),tb)
-        print "%s\n\n%s" % (msg, str(e))
-        sm('Error',msg,toErr)
-        sys.exit()
-
-    # Do it all over again, after some rest
-    time.sleep(sleepytime)
+#    except Exception, e:
+#        tb = traceback.format_exc()
+#        msg = """
+#        %s
+#        Catch is going offline due to user error !
+#        Check my error logs for details...
+#        
+#        Exception:
+#        %s
+#        
+#        Traceback:
+#        %s""" % (time.asctime(),str(e),tb)
+#        print "%s\n\n%s" % (msg, str(e))
+#        sm('Error',msg,toErr)
+#        sys.exit()
+#
+#    # Do it all over again, after some rest
+#    time.sleep(sleepytime)
 
 

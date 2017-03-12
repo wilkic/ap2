@@ -28,15 +28,10 @@ def setupDirs( baseDir ):
 def logSpot( ts, spot, logDir ):
     
     # Log spot data
-    data = ( [ts, spot['timePresent']] 
-             + spot['means']
-             + spot['sigs']
-             + spot['maxs']
-             + spot['mins']
-             + [spot['nEdges']]
-             + [spot['nKeys']] )
+    data = ( [ts, spot.timePresent] 
+             + [spot.nEdges] )
 
-    fname = 'spot' + str(spot['number']) + '.log'
+    fname = 'spot' + str(spot.number) + '.log'
     ffname = join( logDir, fname )
     
     with open(ffname,'a+') as l:

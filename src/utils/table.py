@@ -2,11 +2,9 @@
 import os, sys
 import time
 
-sys.path.append(os.getcwd())
-
 import html_ops as ho
 
-def writeTable( spots ):
+def write( spots ):
 
     # Put the data in a table
     tabHtml = """
@@ -62,10 +60,10 @@ def writeTable( spots ):
         # -- before marked as violating.
         # -- Which is NOT what we want to indicate when
         # -- presenting the number of spots available
-        occupied = spot['timeOccupied'] > 0
-        deduct = occupied or spot['monthly']
-        deduct = deduct or spot['faultyCamera']
-        deduct = deduct or spot['handicap']
+        occupied = spot.timeOccupied > 0
+        deduct = occupied or spot.monthly
+        deduct = deduct or spot.faultyCamera
+        deduct = deduct or spot.handicap
 
         n_remaining -= deduct
         
@@ -73,46 +71,45 @@ def writeTable( spots ):
         rcolor = '#FFFFFF'
 
         # Black out if camera is failed
-        if spot['faultyCamera']:
+        if spot.faultyCamera:
             rcolor = '#000000'
 
-        if spot['violation']:
+        if spot.violation:
             rcolor = '#FF0000'
-        elif spot['failedDetection']:
+        elif spot.failedDetection:
             rcolor = '#FF7F00'
-        elif spot['monthly']:
+        elif spot.monthly:
             rcolor = '#0000FF'
-        elif spot['paid']:
+        elif spot.paid:
             rcolor = '#00FF00'
-        elif spot['handicap']:
+        elif spot.handicap:
             rcolor = '#FFFF00'
 
         rowsty = 'style="background-color:%s"' % rcolor
         row = '<tr %s>' % rowsty
-        
         spaceText = 'Space ' + str(s)
-        linkText = '<a href="' + spot['url'] + '">' + spaceText + '</a>'
+        linkText = '<a href="' + spot.ffname + '">' + spaceText + '</a>'
         spaceCell = '<td>' + linkText + '</td>'
         occCell = '<td> ' + str(occupied) + '</td>'
-        presCell = '<td> ' + str(spot['timePresent']) + '</td>'
-        paidCell = '<td> ' + str(spot['paid']) + '</td>'
-        if spot['payStartTime']:
-            pst_lt = time.localtime(spot['payStartTime'])
+        presCell = '<td> ' + str(spot.timePresent) + '</td>'
+        paidCell = '<td> ' + str(spot.paid) + '</td>'
+        if spot.payStartTime:
+            pst_lt = time.localtime(spot.payStartTime)
             pst_str = time.asctime(pst_lt)
         else:
             pst_str = ''
-        if spot['payEndTime']:
-            pet_lt = time.localtime(spot['payEndTime'])
+        if spot.payEndTime:
+            pet_lt = time.localtime(spot.payEndTime)
             pet_str = time.asctime(pet_lt)
         else:
             pet_str = ''
         pstCell = '<td> ' + pst_str + '</td>'
         petCell = '<td> ' + pet_str + '</td>'
-        lpnCell = '<td> ' + str(spot['lpn']) + '</td>'
-        lpsCell = '<td> ' + str(spot['lps']) + '</td>'
-        mnthCell = '<td> ' + str(spot['monthly']) + '</td>'
-        ost_lt = time.localtime(spot['occupationStartTime'])
-        oet_lt = time.localtime(spot['occupationEndTime'])
+        lpnCell = '<td> ' + str(spot.lpn) + '</td>'
+        lpsCell = '<td> ' + str(spot.lps) + '</td>'
+        mnthCell = '<td> ' + str(spot.monthly) + '</td>'
+        ost_lt = time.localtime(spot.occupationStartTime)
+        oet_lt = time.localtime(spot.occupationEndTime)
         ostCell = '<td> ' + time.asctime(ost_lt) + '</td>'
         oetCell = '<td> ' + time.asctime(oet_lt) + '</td>'
         row += spaceCell 
@@ -125,8 +122,8 @@ def writeTable( spots ):
         tabHtml += row
         
         # Only populate subtable with what's certain cases
-        showMe = spot['paid'] == 1 or spot['violation']
-        dontShowMe = spot['monthly']
+        showMe = spot.paid == 1 or spot.violation
+        dontShowMe = spot.monthly
         if showMe and not dontShowMe:
             ptabHtml += row
 

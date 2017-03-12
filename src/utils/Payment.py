@@ -6,11 +6,11 @@ from notifications import send_msg as sm
 
 
 class Payment:
-    nFails = 0,
-    url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json',
-    usr = '',
-    pwd = '',
-    log = '',
+    nFails = 0
+    url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
+    usr = ''
+    pwd = ''
+    log = ''
     notification_reception = ''
 
     

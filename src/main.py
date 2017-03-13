@@ -98,7 +98,7 @@ sld, cld, csd = log.setupDirs( data_dir )
 for index in range(0,1):
 #while True:
     
-#    try:
+    try:
         now = time.time
         print "time index", index
         # Update spots info from cameras
@@ -123,23 +123,23 @@ for index in range(0,1):
         for s, spot in spots.iteritems():
             log.logSpot(spot,sld)
 
-#    except Exception, e:
-#        tb = traceback.format_exc()
-#        msg = """
-#        %s
-#        Catch is going offline due to user error !
-#        Check my error logs for details...
-#        
-#        Exception:
-#        %s
-#        
-#        Traceback:
-#        %s""" % (time.asctime(),str(e),tb)
-#        print "%s\n\n%s" % (msg, str(e))
-#        sm('Error',msg,toErr)
-#        sys.exit()
-#
-#    # Do it all over again, after some rest
-#    time.sleep(sleepytime)
+    except Exception, e:
+        tb = traceback.format_exc()
+        msg = """
+        %s
+        Catch is going offline due to user error !
+        Check my error logs for details...
+        
+        Exception:
+        %s
+        
+        Traceback:
+        %s""" % (time.asctime(),str(e),tb)
+        print "%s\n\n%s" % (msg, str(e))
+        sm('Error',msg,toErr)
+        sys.exit()
+
+    # Do it all over again, after some rest
+    time.sleep(sleepytime)
 
 

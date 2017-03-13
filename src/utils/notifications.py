@@ -18,13 +18,13 @@ def print_mean( mean ):
 
     return
 
-def setup_server( pass=None ):
+def setup_server( pwd=None ):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
 
     sender = "goodspeedviper@gmail.com"
-    if pass is None:
+    if pwd is None:
         pwd = getpass.getpass()
 
     #Next, log in to the server
@@ -76,9 +76,9 @@ def send_mean( mean, recipients ):
     return
 
 
-def send_msg( subject, message, recipients, pass=None ):
+def send_msg( subject, message, recipients, pwd=None ):
 
-    srvDict = setup_server(pass)
+    srvDict = setup_server(pwd)
     if srvDict is None:
         print "Not emailing because of gmail issues"
         return
@@ -102,9 +102,9 @@ def send_msg( subject, message, recipients, pass=None ):
 
     return
 
-def send_msg_with_jpg( subject, message, fname, recipients, pass=None  ):
+def send_msg_with_jpg( subject, message, fname, recipients, pwd=None  ):
 
-    srvDict = setup_server(pass)
+    srvDict = setup_server(pwd)
     if srvDict is None:
         print "Not emailing because of gmail issues"
         return

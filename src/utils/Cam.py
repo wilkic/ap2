@@ -64,7 +64,7 @@ class Cam:
             Spots[sn].imageTimeStamp = ts
             
             # Get the polygon vertices for the spot
-            verts = array( Spots[sn].vertices )
+            verts = array( Spots[sn].vertices ).astype('int32')
             
             # Make (boolean) mask for spot
             mask = zeros((im.shape[0],im.shape[1]))

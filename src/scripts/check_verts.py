@@ -28,7 +28,7 @@ config_fname = '../../cfg/cam_config.json'
 with open(config_fname) as f:
     cams = jl(f)
 
-camera = cams['cam2']
+camera = cams['cam3']
 
 _plot = True
 
@@ -52,8 +52,9 @@ if _plot is True:
 for spot in camera['spots']:
 
     verts = np.array(spot['vertices'])
-    verts.astype('int32')
-    cv2.polylines(imc,[verts],True,(0,255,255))
+    vs = verts.astype('int32')
+    sn = spot['number']
+    cv2.polylines(imc,[vs],True,(0,255,255))
 
 plt.imshow(imc)
 plt.show()
@@ -64,7 +65,7 @@ for spot in camera['spots']:
 #    if spot['number'] != 38:
 #        continue
     
-    verts = spot['vertices']
+    verts = np.array(spot['vertices']).astype('int32')
     
     mask = np.zeros((im.shape[0],im.shape[1]))
     cv2.fillConvexPoly(mask,verts,1)
@@ -96,7 +97,8 @@ if _plot is True:
     plt.close()
 
 
-for spot in camera['spots']:
-    pp.pprint(spot)
+#for spot in camera['spots']:
+#    pp.pprint(spot)
 
+pp.pprint(camera)
 

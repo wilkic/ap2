@@ -13,36 +13,43 @@ import os
 ###################
 
 class Spot:
-    vertices = []
-    base_nEdges = 0
-    monthly = 0
-    handicap = 0
-    nEdges = 0
-    imageTimeStamp = 0
-    tPresent = 0
-    presenceStartTime = 0
-    occupied = 0
-    timeOccupied = 0
-    occupationStartTime = 0
-    occupationEndTime = 0
-    occupationThresh = 0
-    paid = 0
-    payStartTime = ''
-    payEndTime = ''
-    lps = ''
-    lpn = ''
-    violation = 0
-    failedDetection = 0
-    image = []
-    ffname = []
-    faultyCamera = False
 
     def __init__(self,n):
+        
+        # Spot inherent properties
         self.number = n
+        
+        # Read in by camConfig
+        self.monthly = 0
+        self.handicap = 0
+        self.vertices = []
+        self.base_nEdges = 0
+        
+        # Assigned by camera
+        self.imageTimeStamp = 0
         self.nEdges = 0
         self.image = []
-        self.ffname = []
         self.faultyCamera = False
+
+        # Assigned by payment
+        self.paid = 0
+        self.payStartTime = ''
+        self.payEndTime = ''
+        self.lps = ''
+        self.lpn = ''
+
+        # Self assigned
+        self.ffname = []
+        self.tPresent = 0
+        self.presenceStartTime = 0
+        self.occupied = 0
+        self.timeOccupied = 0
+        self.occupationStartTime = 0
+        self.occupationEndTime = 0
+        self.occupationThresh = 0
+        self.violation = 0
+        self.failedDetection = 0
+
 
     def init( self, spot_dict, t2occ=60 ):
         if self.number is not spot_dict['number']:

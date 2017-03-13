@@ -25,15 +25,14 @@ def setupDirs( baseDir ):
     return sld, cld, csd
 
 
-def logSpot( ts, spot, logDir ):
+def logSpot( spot, logDir ):
     
     # Log spot data
-    data = ( [ts, spot.timePresent] 
+    data = ( [spot.imageTimeStamp, spot.tPresent] 
              + [spot.nEdges] )
 
     fname = 'spot' + str(spot.number) + '.log'
     ffname = join( logDir, fname )
-    
     with open(ffname,'a+') as l:
         w = csv_writer(l)
         w.writerow(data)

@@ -26,7 +26,7 @@ sleepytime = 900
 data_dir = os.getcwd()
 
 # Spot numbers is a list of ints
-spotNumbers = range(1,15)
+spotNumbers = range(1,23)
 
 violationThresh = 1200
 
@@ -123,7 +123,7 @@ for index in range(0,1):
 
         # Log spot data
         for s, spot in spots.iteritems():
-            log.logSpot(now,spot,cld)
+            log.logSpot(spot,sld)
 
 #    except Exception, e:
 #        tb = traceback.format_exc()

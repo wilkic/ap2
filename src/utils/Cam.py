@@ -57,14 +57,20 @@ class Cam:
         # Get edges in image (use mask later)
         edges = cv2.Canny( im, self.edgeLimLo, self.edgeLimHi )
 	
-        # Loop over spots, writing number of edges for each
-        for sn in Spots:
+        # Loop over this cameras spots,
+        # writing number of edges for each
+        for sn in self.spots:
+            
+            # Grab reference to the spot from Spot dictionary 
+            # based on lookup of key (spot number)
+            # from the spot number list for this camera
+            spot = Spots[sn]
 
             # Log the image timestamp to each spot
-            Spots[sn].imageTimeStamp = ts
+            spot.imageTimeStamp = ts
             
             # Get the polygon vertices for the spot
-            verts = array( Spots[sn].vertices ).astype('int32')
+            verts = array( spot.vertices ).astype('int32')
             
             # Make (boolean) mask for spot
             mask = zeros((im.shape[0],im.shape[1]))
@@ -78,13 +84,13 @@ class Cam:
             ### Get number of edges
             spotEdges = edges[bMask]
             edgeInds = where(spotEdges == 255)
-            Spots[sn].nEdges = shape(edgeInds)[1]
+            spot.nEdges = shape(edgeInds)[1]
 
             # Write spot image with edges/outline to itself
             imc = im.copy()
             v = verts.astype('int32')
             cv2.polylines(imc,[verts],True,(0,255,255))
-            Spots[sn].image = imc
+            spot.image = imc
 
         return
 

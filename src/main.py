@@ -14,8 +14,6 @@ import traceback
 
 from copy import copy as copy
 
-import ipdb
-
 ##########################################
 ##########################################
 ##########################################
@@ -102,7 +100,7 @@ for index in range(0,1):
     
 #    try:
         now = time.time
-
+        print "time index", index
         # Update spots info from cameras
         for c, cam in cams.iteritems():
             cam.analyze(spots)
@@ -116,7 +114,7 @@ for index in range(0,1):
 
         # Determine violation
         for s, spot in spots.iteritems():
-            spot.update_status( violationThresh, cd, vd, ud )
+            spot.update_status( toForce, violationThresh, cd, vd, ud )
         
         # Update table
         table.write(spots)

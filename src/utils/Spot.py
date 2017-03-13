@@ -1,12 +1,14 @@
 from json import load as jl
 
 import notifications as notify
-import files
+from files import try_copy
 
 from sys import exit as quit
 
 from cv2 import imwrite
 import os
+
+import time
 
 ###################
 ###################
@@ -114,7 +116,7 @@ class Spot:
         return self.nEdges > self.base_nEdges
 
 
-    def update_status( self, freeTime, imdir='.', vdir='.', udir='.' ):
+    def update_status( self, to, freeTime, imdir='.', vdir='.', udir='.' ):
         
         # Write spot image to directory
         fname = 'spot%d.jpg' % self.number
@@ -134,13 +136,13 @@ class Spot:
                 lt = time.localtime(self.occupationStartTime)
                 tss = time.strftime('%Y%m%dT%H%M%S',lt)
                 
-                vfname = 'spot%d_%s.jpg' % (ss,tss)
+                vfname = 'spot%d_%s.jpg' % (self.number,tss)
                 vfname = os.path.join( vdir, vfname )
-                copied = try_copy( ffname, vfname ) 
+                copied = try_copy( self.ffname, vfname ) 
                 if copied:
                     send_image = vfname
                 else:
-                    send_image = fname
+                    send_image = self.ffname
                 sub = "Violation"
                 msg = """
                 %s
@@ -164,19 +166,19 @@ class Spot:
                         pstt = time.localtime(tss)
                         pss = time.strftime('%Y%m%dT%H%M%S',pstt)
                         
-                        ufname = 'spot%d_%s.jpg' % (ss,pss)
+                        ufname = 'spot%d_%s.jpg' % (self.number,pss)
                         ufname = os.path.join( udir, ufname )
-                        copied = try_copy( ffname, ufname ) 
+                        copied = try_copy( self.ffname, ufname ) 
                         if copied:
                             send_image = ufname
                         else:
-                            send_image = fname
+                            send_image = self.ffname
                         sub = "Failed Detection?"
                         msg = """
                         %s
                         Spot %d Detection Failed, or ...
                         Person left spot within pay period
-                        """ % (pss, s)
+                        """ % (pss, self.number)
                         notify.send_msg_with_jpg( sub, msg, send_image, to )
                 else:
                     self.failedDetection = False

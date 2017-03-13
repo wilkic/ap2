@@ -47,7 +47,7 @@ class Payment:
 
         # Populate spots based on response
         if resp.status_code != 404:
-            try:
+            #try:
                 # Read data
                 data = resp.json()
                 
@@ -57,12 +57,12 @@ class Payment:
                     pp( data, stream=out )
                 
                 # Write it to spot object
-                assign( data, spots )
+                self.assign( data, spots )
 
-            except Exception, e:
-                print "PM API returning crap JSON?"
-                print "Exception: \n%s" % str(e)
-                print "Response: \n%s" % resp.text
+            #except Exception, e:
+            #    print "PM API returning crap JSON?"
+            #    print "Exception: \n%s" % str(e)
+            #    print "Response: \n%s" % resp.text
 
         return
 
@@ -70,18 +70,19 @@ class Payment:
 
 
     def assign( self, data, spots ):
-        
+        import ipdb
         if 'parkingRights' in data:
+            ipdb.set_trace()
             paid = []
             for i in data['parkingRights']:
                 
                 # Get space number
                 sn = int( i['spaceNumber'] )
+                print 'space number %d is parked' % sn
+                ipdb.set_trace()
 
                 # Make sure space number is a valid spot
-                if sn > len(spots):
-                    continue
-                if not spots[sn]:
+                if sn not in spots:
                     continue
 
                 spots[ sn ].lpn = str(i['lpn'])
@@ -104,7 +105,7 @@ class Payment:
                 if now > spots[sn].payStartTime:
                     
                     if now < spots[sn].payEndTime:
-                        spots[ sn ]['paid'] = 1
+                        spots[ sn ].paid = 1
                         paid += [sn]
             
             for s,spot in spots.iteritems():

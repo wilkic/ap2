@@ -28,7 +28,7 @@ config_fname = '../../cfg/cam_config.json'
 with open(config_fname) as f:
     cams = jl(f)
 
-camera = cams['cam3']
+camera = cams['cam2']
 
 _plot = True
 

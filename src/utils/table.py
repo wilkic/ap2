@@ -4,7 +4,10 @@ import time
 
 import html_ops as ho
 
-def write( spots ):
+def write( spots, site_dir=None, dev_mode=False ):
+    
+    if site_dir is None:
+        site_dir = os.getcwd()
 
     # Put the data in a table
     tabHtml = """
@@ -91,7 +94,7 @@ def write( spots ):
         linkText = '<a href="' + spot.ffname + '">' + spaceText + '</a>'
         spaceCell = '<td>' + linkText + '</td>'
         occCell = '<td> ' + str(occupied) + '</td>'
-        presCell = '<td> ' + str(spot.timePresent) + '</td>'
+        presCell = '<td> ' + str(spot.tPresent) + '</td>'
         paidCell = '<td> ' + str(spot.paid) + '</td>'
         if spot.payStartTime:
             pst_lt = time.localtime(spot.payStartTime)
@@ -134,16 +137,12 @@ def write( spots ):
 
     tabHtml += endHtml
     ptabHtml += endHtml
-
+    
     with open('table.html','w') as f:
         f.write(tabHtml)
     with open('paidTable.html','w') as f:
         f.write(ptabHtml)
-
-    #os.rename("table.html","/var/www/html/newtable/index.html")
-    #os.rename("paidTable.html","/var/www/html/whospaid/index.html")
-    print 'WARNING: table webpage is not going to served site location!'
-
+    
     nHtml = """\
             <div>
               <font size="7">
@@ -153,8 +152,16 @@ def write( spots ):
             """ % n_remaining 
 
     ho.write_page( 'n_avail.html', 'Available Spots', 30, nHtml )
-    #os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
-    print 'WARNING: number webpage is not going to served site location!'
+    
+    if not dev_mode:
+        target = os.path.join(site_dir,'newtable/index.html')
+        os.rename("table.html",target)
+        target = os.path.join(site_dir,'whospaid/index.html')
+        os.rename("paidTable.html",target)
+        target = os.path.join(site_dir,'n_spots_available/index.html')
+        os.rename("n_avail.html",target)
+    else:
+        print 'WARNING: html products not going to served site location!'
 
 
     return

@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
+
 def print_mean( mean ):
     
     body = \
@@ -24,6 +25,7 @@ def setup_server( pwd=None ):
     server.starttls()
 
     sender = "goodspeedviper@gmail.com"
+    pwd='slowbadsnake'
     if pwd is None:
         pwd = getpass.getpass()
 

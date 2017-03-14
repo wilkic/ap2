@@ -19,9 +19,7 @@ from copy import copy as copy
 ##########################################
 
 
-sleepytime = 900
-
-data_dir = os.getcwd()
+sleepytime = 300
 
 # Spot numbers is a list of ints
 spotNumbers = range(1,23)
@@ -34,7 +32,18 @@ toForce = ['test@test.com']
 toErr = ['test@test.com']
 toSpam = ['test@test.com']
 
+dev_mode = True
+
+if dev_mode:
+    #data_dir = os.getcwd()
+    data_dir = '/home/acp/work/ggp/bpark/catch_output/'
+    site_dir = '.'
+else:
+    data_dir = '/mnt/data/catch/bpark/catch_output/'
+    site_dir = '/var/www/html/bpark/'
+
 os.environ['TZ'] = 'US/Eastern'
+
 
 ##########################################
 ##########################################
@@ -57,7 +66,7 @@ for c, cam in camConfig.iteritems():
 
 
 # Read api config, pass to Payment for initialization
-payLog = os.path.join(os.getcwd(),'pmAPI.log')
+payLog = os.path.join(data_dir,'pmAPI.log')
 apiConfigFname = '../cfg/apiConfig.json'
 with open(apiConfigFname) as f:
     apiConfig = jl(f)
@@ -95,12 +104,15 @@ sld, cld, csd = log.setupDirs( data_dir )
 ######################################
 ######################################
 
-for index in range(0,1):
-#while True:
+t0 = time.time()
+
+#for index in range(0,3):
+while True:
     
     try:
-        now = time.time
-        print "time index", index
+
+        now = time.time()
+        
         # Update spots info from cameras
         for c, cam in cams.iteritems():
             cam.analyze(spots)
@@ -111,13 +123,13 @@ for index in range(0,1):
 
         # Get spot payment status
         payment.update(spots)
-
+        
         # Determine violation
         for s, spot in spots.iteritems():
             spot.update_status( toForce, violationThresh, cd, vd, ud )
         
         # Update table
-        table.write(spots)
+        table.write(spots,site_dir,dev_mode)
 
         # Log spot data
         for s, spot in spots.iteritems():

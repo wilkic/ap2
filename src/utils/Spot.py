@@ -147,7 +147,7 @@ class Spot:
                 msg = """
                 %s
                 Spot %d in VIOLATION
-                """ % (time.asctime(lt), s)
+                """ % (time.asctime(lt), self.number)
                 notify.send_msg_with_jpg( sub, msg, send_image, team )
         else:
             self.violation = False

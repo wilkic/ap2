@@ -205,7 +205,7 @@
                              [282, 55],
                              [303, 72],
                              [273, 66]],
-                "base_nEdges": 100,
+                "base_nEdges": 75,
                 "monthly": 0,
                 "handicap": 0
             },
@@ -225,7 +225,7 @@
                              [348, 68],
                              [373, 87],
                              [354, 83]],
-                "base_nEdges": 100,
+                "base_nEdges": 50,
                 "monthly": 0,
                 "handicap": 0
             },

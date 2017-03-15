@@ -91,7 +91,7 @@ def write( spots, site_dir=None, dev_mode=False ):
         rowsty = 'style="background-color:%s"' % rcolor
         row = '<tr %s>' % rowsty
         spaceText = 'Space ' + str(s)
-        imname = 'imgs/spot%d.jpg'
+        imname = 'imgs/spot%d.jpg' % spot.number
         linkText = '<a href="' + imname + '">' + spaceText + '</a>'
         spaceCell = '<td>' + linkText + '</td>'
         occCell = '<td> ' + str(occupied) + '</td>'

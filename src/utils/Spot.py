@@ -53,7 +53,7 @@ class Spot:
         self.failedDetection = 0
 
 
-    def init( self, spot_dict, t2occ=60 ):
+    def init( self, spot_dict ):
         if self.number is not spot_dict['number']:
             quit()
         self.vertices = spot_dict['vertices']

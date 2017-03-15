@@ -11,6 +11,7 @@ from json import load as jl
 import os
 import time
 import traceback
+from sys import exit as quit
 
 from copy import copy as copy
 
@@ -149,7 +150,7 @@ while True:
         %s""" % (time.asctime(),str(e),tb)
         print "%s\n\n%s" % (msg, str(e))
         sm('Error',msg,toErr)
-        sys.exit()
+        quit()
 
     # Do it all over again, after some rest
     time.sleep(sleepytime)

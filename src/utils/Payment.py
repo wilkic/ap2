@@ -53,7 +53,7 @@ class Payment:
                 data = resp.json()
                 
                 # Log it
-                if not exists(dirname(self.log):
+                if not exists(dirname(self.log)):
                     mkdir(dirname(self.log))    
                 with open(self.log,'a') as out:
                     print >> out, time.asctime()

@@ -3,7 +3,8 @@ import requests
 import time
 from pprint import pprint as pp
 from notifications import send_msg as sm
-
+from os.path import exists, dirname
+from os import makedirs as mkdir
 
 class Payment:
     nFails = 0
@@ -52,6 +53,8 @@ class Payment:
                 data = resp.json()
                 
                 # Log it
+                if not exists(dirname(self.log):
+                    mkdir(dirname(self.log))    
                 with open(self.log,'a') as out:
                     print >> out, time.asctime()
                     pp( data, stream=out )

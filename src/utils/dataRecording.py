@@ -33,6 +33,8 @@ def logSpot( spot, logDir ):
 
     fname = 'spot' + str(spot.number) + '.log'
     ffname = join( logDir, fname )
+    if not exists(logDir):
+        mkdir( logDir )
     with open(ffname,'a+') as l:
         w = csv_writer(l)
         w.writerow(data)
@@ -44,6 +46,8 @@ def addState( camera, logDir ):
     # append the state to the log
     fname = 'camera' + str(camera['number']) + '_dict.log'
     ffname = join(logDir,fname)
+    if not exists(logDir):
+        mkdir( logDir )
     with open(ffname,'a+') as out:
         pp( camera, stream=out )
     
@@ -54,6 +58,8 @@ def recordState( camera, logDir ):
     # store the current state of the camera
     fname = 'camera' + str(camera['number']) + '.dict'
     ffname = join( logDir, fname )
+    if not exists(logDir):
+        mkdir( logDir )
     with open(ffname,'w+') as out:
         pp( camera, stream=out )
     

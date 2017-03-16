@@ -53,6 +53,7 @@ class Cam:
             ts = self.tsLocation
 	if isinstance(ts, basestring):
             ts = parse_ts( ts )
+                
          
         # Get edges in image (use mask later)
         edges = cv2.Canny( im, self.edgeLimLo, self.edgeLimHi )

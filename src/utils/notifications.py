@@ -105,20 +105,29 @@ def send_msg( subject, message, recipients, pwd=None ):
     return
 
 def send_msg_with_jpg( subject, message, fname, recipients, pwd=None  ):
-
+    
+    # Initialize
     srvDict = setup_server(pwd)
     if srvDict is None:
         print "Not emailing because of gmail issues"
         return
-
+    
+    # Compose the email
     msg = MIMEMultipart()
     body = MIMEText(message,'plain')
     msg['Subject'] = subject
     msg['From'] = srvDict['sender']
     msg['To'] = ', '.join(recipients)
     msg.attach(body)
-    msg.attach(MIMEImage(file(fname).read(), _subtype="jpeg"))
-    
+
+    # Attach image
+    try:
+        msg.attach(MIMEImage(file(fname).read(), _subtype="jpeg"))
+    except IOError as e:
+        body += "\nNo Image Available at This Time\n"
+        msg.attach(body)
+
+    # Send email
     try:
         srvDict['server'].sendmail( srvDict['sender'], 
                                     recipients,
@@ -130,7 +139,8 @@ def send_msg_with_jpg( subject, message, fname, recipients, pwd=None  ):
         
         was caught while trying to notify of:
          %s""" % (e,message))
-
+    
+    # Close it out, and get out
     srvDict['server'].close()
 
     return

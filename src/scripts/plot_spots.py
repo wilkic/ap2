@@ -58,7 +58,8 @@ plot_spots = range(1,23)
 tmin = -24
 tmax = 0
 
-fdir = os.path.expanduser('~/work/ggp/bpark/catch_output/spot_logs/')
+#fdir = os.path.expanduser('~/work/ggp/bpark/catch_output/spot_logs/')
+fdir = os.path.expanduser('~/work/ggp/bpark/archive/0316/spot_logs/')
 
 config_fname = '../../cfg/cam_config.json'
 
@@ -68,7 +69,15 @@ spots = get_spot_data(fdir,plot_spots)
 with open(config_fname) as f:
     camConfig = jl(f)
 
-    
+spot_edges = {}
+
+for c,cam in camConfig.iteritems():
+    sl = cam['spots']
+    for s in sl:
+        sn = s['number']
+        spot_edges[sn] = s['base_nEdges']
+
+
 i = 1
 for s in spots:
    
@@ -81,8 +90,7 @@ for s in spots:
     
     inds = np.where( np.bitwise_and( t2end > tmin, t2end < tmax ) )
 
-    #edgelim = s['elim']
-    edgelim = 100
+    edgelim = spot_edges[s['num']]
     nes = np.asarray( s['nEdges'] )
     
     

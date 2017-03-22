@@ -124,7 +124,8 @@ def send_msg_with_jpg( subject, message, fname, recipients, pwd=None  ):
     try:
         msg.attach(MIMEImage(file(fname).read(), _subtype="jpeg"))
     except IOError as e:
-        body += "\nNo Image Available at This Time\n"
+        message += "\nNo Image Available at This Time\n"
+        body = MIMEText(message,'plain')
         msg.attach(body)
 
     # Send email

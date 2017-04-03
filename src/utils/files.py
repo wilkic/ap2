@@ -1,7 +1,22 @@
+import errno
+from os import makedirs as mkdir
+from os import path as os_path
+
+def mkdir_p(path):
+    try:
+        mkdir(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os_path.isdir(path):
+            pass
+        else:
+            raise
+
+
 from shutil import copyfile as cp
 
 def try_copy( src, dest ):
     try:
+	mkdir_p(dest)
         cp( src, dest )
         return True
     except IOError as e:

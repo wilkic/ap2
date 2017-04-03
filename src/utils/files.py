@@ -5,8 +5,8 @@ from shutil import copyfile as cp
 
 def cp_safe( src, dest ):
     bdir = os_path.dirname(dest)
-    if not os.path.exists(bdir)
-        os.mkdirs(bdir)
+    if not os_path.exists(bdir):
+        mkdir(bdir)
     cp(src,dest)
 
 

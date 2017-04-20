@@ -121,6 +121,8 @@ class Spot:
         # Write spot image to directory
         fname = 'spot%d.jpg' % self.number
         self.ffname = os.path.join(imdir,fname)
+        if not os.path.exists(imdir):
+            os.makedirs(imdir)
         imwrite(self.ffname,self.image)
 
         # If monthly, nothing to do

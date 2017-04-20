@@ -48,6 +48,10 @@ class Cam:
 	else:
 	    im = image
         
+        # If the image is empty, do nothing
+        if im is None:
+            return
+
         # Allow for timestamp to be a filename or value
         if ts is None:
             ts = self.tsLocation

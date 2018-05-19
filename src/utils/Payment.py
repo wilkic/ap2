@@ -8,7 +8,7 @@ from os import makedirs as mkdir
 
 class Payment:
     nFails = 0
-    url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
+    url = 'https://nforce.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
     usr = ''
     pwd = ''
     log = ''

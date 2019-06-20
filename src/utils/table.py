@@ -75,7 +75,7 @@ def write( spots, site_dir=None, dev_mode=False ):
 
         # Black out if camera is failed
         if spot.faultyCamera:
-            rcolor = '#000000'
+            rcolor = '#808080'
 
         if spot.violation:
             rcolor = '#FF0000'

@@ -37,11 +37,11 @@ dev_mode = True
 
 if dev_mode:
     #data_dir = os.getcwd()
-    data_dir = '/home/acp/work/ggp/bpark/catch_output/'
+    data_dir = '/home/acp/work/ap2/catch_output/'
     site_dir = '.'
 else:
-    data_dir = '/mnt/data/catch/bpark/catch_output/'
-    site_dir = '/var/www/html/bpark/'
+    data_dir = '/mnt/data/ap2/catch_output/'
+    site_dir = '/var/www/html/ap2/'
 
 os.environ['TZ'] = 'US/Eastern'
 

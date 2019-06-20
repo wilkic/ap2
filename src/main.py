@@ -23,7 +23,7 @@ from copy import copy as copy
 sleepytime = 300
 
 # Spot numbers is a list of ints
-spotNumbers = range(1,23)
+spotNumbers = range(1,50)
 
 violationThresh = 1200
 
@@ -37,7 +37,7 @@ dev_mode = True
 
 if dev_mode:
     #data_dir = os.getcwd()
-    data_dir = '/home/acp/work/ap2/catch_output/'
+    data_dir = '/home/c/work/ap2/catch_output/'
     site_dir = '.'
 else:
     data_dir = '/mnt/data/ap2/catch_output/'

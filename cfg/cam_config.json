@@ -1,123 +1,77 @@
 {
     "cam1": {
         "number": 1,
-        "im_full_path": "/mnt/data/catch/bpark/cam1.jpg",
-        "ts_full_path": "/mnt/data/catch/bpark/ts1.js",
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam1.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts1.js",
         "spots": [
+            {
+                "number": 1,
+                "vertices": [
+			 [  1920,  960],
+                         [  1470,  190],
+                         [  1675,  190],
+                         [  1920,  540]
+                            ],
+                "base_nEdges": 900,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 2,
+                "vertices": [
+                         [   790,  1080],
+                         [   705,   120],
+                         [  1220,   150],
+                         [  1630,  1080]
+                            ],
+                "base_nEdges": 8000,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 3,
+                "vertices": [
+                         [    0,   375],
+                         [  150,   100],
+                         [  590,   100],
+                         [  630,  1080],
+                         [    0,  1080]
+                            ],
+                "base_nEdges": 6000,
+                "monthly": 0,
+                "handicap": 0
+            }
         ]
     },
 
     "cam2": {
         "number": 2,
-        "im_full_path": "/mnt/data/catch/bpark/cam2.jpg",
-        "ts_full_path": "/mnt/data/catch/bpark/ts2.js",
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam2.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts2.js",
         "spots": [
             {
                 "number": 4,
-                "vertices": [[ 23, 186],
-                             [ 76, 177],
-                             [ 130, 210],
-                             [ 45, 210]],
-                "base_nEdges": 100,
+                "vertices": [
+                             [ 220,   0],
+                             [ 370,   0],
+                             [ 400, 100],
+                             [ 400, 224],
+                             [ 220, 224]
+                            ],
+                "base_nEdges": 6,
                 "monthly": 0,
                 "handicap": 0
             },
             {
                 "number": 5,
-                "vertices": [[ 90, 170],
-                             [ 130, 160],
-                             [ 175, 180],
-                             [ 120, 190]],
-                "base_nEdges": 100,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 6,
-                "vertices": [[ 145, 150],
-                             [ 212, 152],
-                             [ 210, 180]],
-                "base_nEdges": 55,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 7,
-                "vertices": [[ 230.467742, 157.306452],
-                             [ 244.661290, 146.338710],
-                             [ 280.790323, 156.661290],
-                             [ 271.112903, 168.274194]],
-                "base_nEdges": 100,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 8,
-                "vertices": [[ 271.758065, 134.725806],
-                             [ 310.467742, 145.693548],
-                             [ 304.661290, 151.500000],
-                             [ 260.790323, 141.177419]],
-                "base_nEdges": 70,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 9,
-                "vertices": [[ 292.403226, 126.338710],
-                             [ 321.435484, 134.080645],
-                             [ 315.629032, 137.951613],
-                             [ 289.177419, 132.145161]],
-                "base_nEdges": 100,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 10,
-                "vertices": [[ 300.790323, 103.758065],
-                             [ 353.048387, 113.435484],
-                             [ 347.887097, 115.370968],
-                             [ 302.080645, 108.274194]],
-                "base_nEdges": 60,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 11,
-                "vertices": [[ 316.919355, 99.2419],
-                             [ 360.790323, 108.919],
-                             [ 358.854839, 111.500],
-                             [ 307.887097, 103.758]],
-                "base_nEdges": 55,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 14,
-                "vertices": [[145.306452, 103.112903333],
-                             [159.500000, 102.467742348],
-                             [185.951613, 108.274194373],
-                             [171.112903, 111.500000354]],
-                "base_nEdges": 10,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 13,
-                "vertices": [[171.112903, 98.59677],
-                             [178.854839, 98.59677],
-                             [204.016129, 104.4032],
-                             [193.048387, 106.3387]],
-                "base_nEdges": 10,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 12,
-                "vertices": [[189.822581, 94.72580],
-                             [198.854839, 94.72580],
-                             [225.306452, 101.1774],
-                             [212.403226, 103.1129]],
-                "base_nEdges": 10,
+                "vertices": [
+                             [  40,  50],
+                             [ 190,  20],
+                             [ 175, 224],
+                             [   0, 224],
+                             [   0, 180]
+                            ],
+                "base_nEdges": 1000,
                 "monthly": 0,
                 "handicap": 0
             }
@@ -126,120 +80,643 @@
 
     "cam3": {
         "number": 3,
-        "im_full_path": "/mnt/data/catch/bpark/cam3.jpg",
-        "ts_full_path": "/mnt/data/catch/bpark/ts3.js",
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam3.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts3.js",
         "spots": [
             {
-                "number": 1,
-                "vertices": [[   0, 130],
-                             [  56, 132],
-                             [  22, 200],
-                             [   0, 200]],
-                "base_nEdges": 100,
+                "number": 6,
+                "vertices": [
+                             [ 290,   0],
+                             [ 380,   0],
+                             [ 400,  40],
+                             [ 400, 224],
+                             [ 340, 224]
+                            ],
+                "base_nEdges": 50,
                 "monthly": 0,
                 "handicap": 0
             },
             {
-                "number": 2,
-                "vertices": [[  70, 135],
-                             [ 145, 140],
-                             [ 140, 210],
-                             [  40, 200]],
-                "base_nEdges": 105,
+                "number": 7,
+                "vertices": [
+                             [ 130,  30],
+                             [ 265,   0],
+                             [ 310, 224],
+                             [ 105, 224]
+                            ],
+                "base_nEdges": 400,
                 "monthly": 0,
                 "handicap": 0
             },
             {
-                "number": 3,
-                "vertices": [[ 160, 145],
-                             [ 240, 145],
-                             [ 260, 205],
-                             [ 155, 210]],
-                "base_nEdges": 100,
+                "number": 8,
+                "vertices": [
+                             [   0,  50],
+                             [ 100,  50],
+                             [  80, 224],
+                             [   0, 224]
+                            ],
+                "base_nEdges": 175,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+    
+    "cam4": {
+        "number": 4,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam4.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts4.js",
+        "spots": [
+            {
+                "number": 9,
+                "vertices": [
+                             [ 400, 180],
+                             [ 290,  20],
+                             [ 400,  20]
+                            ],
+                "base_nEdges": 550,
                 "monthly": 0,
                 "handicap": 0
             },
             {
-                "number": 22,
-                "vertices": [[90, 39],
-                             [124, 39],
-                             [114, 49],
-                             [79, 50]],
-                "base_nEdges": 70,
+                "number": 10,
+                "vertices": [
+                             [ 190,  30],
+                             [ 260,  30],
+                             [ 370, 224],
+                             [ 260, 224]
+                            ],
+                "base_nEdges": 1000,
                 "monthly": 0,
                 "handicap": 0
             },
             {
-                "number": 21,
-                "vertices": [[134, 40],
-                             [167, 41],
-                             [165, 54],
-                             [125, 52]],
+                "number": 11,
+                "vertices": [
+                             [  40,  40],
+                             [ 145,  40],
+                             [ 170, 224],
+                             [  40, 224]
+                            ],
+                "base_nEdges": 450,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+    
+    "cam5": {
+        "number": 5,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam5.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts5.js",
+        "spots": [
+            {
+                "number": 12,
+                "vertices": [
+                             [ 330,   0],
+                             [ 400,   0],
+                             [ 400, 224],
+                             [ 370, 224]
+                            ],
                 "base_nEdges": 60,
                 "monthly": 0,
                 "handicap": 0
             },
             {
-                "number": 20,
-                "vertices": [[176, 42],
-                             [206, 45],
-                             [213, 58],
-                             [176, 54]],
-                "base_nEdges": 30,
+                "number": 13,
+                "vertices": [
+                             [ 130,  25],
+                             [ 290,  25],
+                             [ 330, 224],
+                             [  90, 224]
+                            ],
+                "base_nEdges": 380,
                 "monthly": 0,
                 "handicap": 0
             },
             {
-                "number": 19,
-                "vertices": [[218, 47],
-                             [247, 50],
-                             [258, 65],
-                             [224, 61]],
-                "base_nEdges": 40,
+                "number": 14,
+                "vertices": [
+                             [   0,  50],
+                             [ 100,  50],
+                             [  50, 224],
+                             [   0, 224]
+                            ],
+                "base_nEdges": 100,
                 "monthly": 0,
                 "handicap": 0
-            },
+            }
+        ]
+    },
+    
+    "cam6": {
+        "number": 6,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam6.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts6.js",
+        "spots": [
             {
-                "number": 18,
-                "vertices": [[260, 52],
-                             [282, 55],
-                             [303, 72],
-                             [273, 66]],
-                "base_nEdges": 60,
-                "monthly": 0,
-                "handicap": 0
-            },
-            {
-                "number": 17,
-                "vertices": [[300, 59],
-                             [316, 61],
-                             [338, 79],
-                             [316, 74]],
-                "base_nEdges": 20,
+                "number": 15,
+                "vertices": [
+                             [   0,  40],
+                             [  30,  40],
+                             [ 100, 170],
+                             [   0, 170]
+                            ],
+                "base_nEdges": 307,
                 "monthly": 0,
                 "handicap": 0
             },
             {
                 "number": 16,
-                "vertices": [[333, 64],
-                             [348, 68],
-                             [373, 87],
-                             [354, 83]],
-                "base_nEdges": 25,
+                "vertices": [
+                             [  85,  20],
+                             [ 290,  20],
+                             [ 235, 195],
+                             [ 140, 195]
+                            ],
+                "base_nEdges": 370,
                 "monthly": 0,
                 "handicap": 0
             },
             {
-                "number": 15,
-                "vertices": [[362, 70],
-                             [373, 73],
-                             [396, 91],
-                            [ 384, 88]],
-                "base_nEdges": 20,
+                "number": 17,
+                "vertices": [
+                             [ 400,   0],
+                             [ 400,  85],
+                             [ 350, 150],
+                             [ 300, 155]
+                            ],
+                "base_nEdges": 180,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 22,
+                "vertices": [
+                             [ 150, 200],
+                             [ 275, 200],
+                             [ 255, 230],
+                             [ 155, 225]
+                            ],
+                "base_nEdges": 222,
                 "monthly": 0,
                 "handicap": 0
             }
+        ]
+    },
+    
+    "cam7": {
+        "number": 7,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam7.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts7.js",
+        "spots": [
+            {
+                "number": 18,
+                "vertices": [
+                             [ 180, 110],
+                             [ 295, 110],
+                             [ 375, 224],
+                             [ 175, 224]
+                            ],
+                "base_nEdges": 282,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 19,
+                "vertices": [
+                             [  50, 110],
+                             [ 150, 110],
+                             [ 150, 224],
+                             [   0, 224],
+                             [   0, 180]
+                            ],
+                "base_nEdges": 420,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 23,
+                "vertices": [
+                             [  80,  30],
+                             [ 220,  30],
+                             [ 220,  50],
+                             [  80,  50]
+                            ],
+                "base_nEdges": 425,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
 
+    "cam8": {
+        "number": 8,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam8.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts8.js",
+        "spots": [
+            {
+                "number": 20,
+                "vertices": [
+                         [   0,  20],
+                         [ 110,  20],
+                         [ 120, 150],
+                         [ 110, 220],
+                         [   0, 220]
+                            ],
+                "base_nEdges": 500,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 21,
+                "vertices": [
+                         [ 233,   0],
+                         [ 400,   0],
+                         [ 400,  90],
+                         [ 305, 220],
+                         [ 195, 220]
+                            ],
+                "base_nEdges": 950,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+
+    "cam9": {
+        "number": 9,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam9.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts9.js",
+        "spots": [
+            {
+                "number": 24,
+                "vertices": [
+                             [  80,  40],
+                             [ 155,  30],
+                             [  95, 170],
+                             [  35, 165],
+                             [  15, 120]
+                            ],
+                "base_nEdges": 131,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 25,
+                "vertices": [
+                             [ 172,  30],
+                             [ 260,  30],
+                             [ 290, 100],
+                             [ 145, 100]
+                            ],
+                "base_nEdges": 425,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 26,
+                "vertices": [
+                             [ 300,  20],
+                             [ 340,  20],
+                             [ 400,  75],
+                             [ 400, 160],
+                             [ 370, 165]
+                            ],
+                "base_nEdges": 280,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+
+    "cam10": {
+        "number": 10,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam10.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts10.js",
+        "spots": [
+            {
+                "number": 27,
+                "vertices": [
+                             [ 489,  474],
+                             [ 835,  446],
+                             [ 711,  867],
+                             [ 272,  839]
+                            ],
+                "base_nEdges": 3200,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 28,
+                "vertices": [
+                             [ 1383,  341],
+                             [ 1700,  328],
+                             [ 1885,  638],
+                             [ 1897,  951],
+                             [ 1665, 1016]
+                            ],
+                "base_nEdges": 2100,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+    
+    "cam11": {
+        "number": 11,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam11.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts11.js",
+        "spots": [
+            {
+                "number": 36,
+                "vertices": [
+                         [    0,  880],
+                         [  200,  580],
+                         [  525,  580],
+                         [  360, 1080],
+                         [    0, 1080]
+                            ],
+                "base_nEdges": 2500,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 37,
+                "vertices": [
+                         [  740,  600],
+                         [ 1260,  600],
+                         [ 1400, 1080],
+                         [  665, 1080]
+                            ],
+                "base_nEdges": 3000,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 38,
+                "vertices": [
+                         [ 1590, 1080],
+                         [ 1420, 610],
+                         [ 1790, 610],
+                         [ 1920, 765],
+                         [ 1920, 1080]
+                            ],
+                "base_nEdges": 800,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 43,
+                "vertices": [
+                         [  900,    0],
+                         [ 1070,    0],
+                         [ 1130,  140],
+                         [  860,  130]
+                            ],
+                "base_nEdges": 1000,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+
+    "cam12": {
+        "number": 12,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam12.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts12.js",
+        "spots": [
+            {
+                "number": 33,
+                "vertices": [
+                         [  225,  675],
+                         [  646,  688],
+                         [  535, 1035],
+                         [   11, 1060]
+                            ],
+                "base_nEdges": 3500,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 34,
+                "vertices": [
+                         [  730,  709],
+                         [ 1287,  697],
+                         [ 1374, 1041],
+                         [  690, 1038]
+                            ],
+                "base_nEdges": 5500,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 35,
+                "vertices": [
+                         [ 1402,  700],
+                         [ 1792,  685],
+                         [ 1894, 1041],
+                         [ 1501, 1050]
+                            ],
+                "base_nEdges": 1700,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 44,
+                "vertices": [
+                         [ 1523,  127],
+                         [ 1684,  223],
+                         [ 1510,  208]
+                            ],
+                "base_nEdges": 75,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 45,
+                "vertices": [
+                         [ 1157,  102],
+                         [ 1334,  118],
+                         [ 1399,  192],
+                         [ 1191,  180]
+                            ],
+                "base_nEdges": 120,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 46,
+                "vertices": [
+                         [  903,   90],
+                         [ 1089,  100],
+                         [ 1101,  174],
+                         [  888,  174]
+                            ],
+                "base_nEdges": 580,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+
+    "cam13": {
+        "number": 13,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam13.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts13.js",
+        "spots": [
+            {
+                "number": 29,
+                "vertices": [
+                             [   0,  60],
+                             [  60,  50],
+                             [  70,  75],
+                             [  55, 140],
+                             [  50, 224],
+                             [   0, 224]
+                            ],
+                "base_nEdges": 108,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 30,
+                "vertices": [
+                             [ 140,  55],
+                             [ 280,  55],
+                             [ 300, 224],
+                             [ 115, 224]
+                            ],
+                "base_nEdges": 600,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+
+    "cam14": {
+        "number": 14,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam14.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts14.js",
+        "spots": [
+            {
+                "number": 31,
+                "vertices": [
+                         [    0, 1080],
+                         [   10, 1000],
+                         [  260,  710],
+                         [  570,  750],
+                         [  440, 1080]
+                            ],
+                "base_nEdges": 6300,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 32,
+                "vertices": [
+                         [  721,  719],
+                         [ 1275,  722],
+                         [ 1340, 1080],
+                         [  620, 1080]
+                            ],
+                "base_nEdges": 11000,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 47,
+                "vertices": [
+                         [ 1173,  161],
+                         [ 1349,  155],
+                         [ 1454,  260],
+                         [ 1213,  260]
+                            ],
+                "base_nEdges": 1000,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 48,
+                "vertices": [
+                         [  940,  155],
+                         [ 1123,  152],
+                         [ 1151,  239],
+                         [  891,  248]
+                            ],
+                "base_nEdges": 1800,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 49,
+                "vertices": [
+                         [  714,  143],
+                         [  885,  143],
+                         [  817,  242],
+                         [  590,  254]
+                            ],
+                "base_nEdges": 1500,
+                "monthly": 0,
+                "handicap": 0
+            }
+        ]
+    },
+
+    "cam15": {
+        "number": 15,
+        "im_full_path": "/mnt/data/catch/images_and_timestamps/cam15.jpg",
+        "ts_full_path": "/mnt/data/catch/images_and_timestamps/ts15.js",
+        "spots": [
+            {
+                "number": 39,
+                "vertices": [
+                             [ 150, 130],
+                             [ 280, 140],
+                             [ 290, 224],
+                             [ 105, 224]
+                            ],
+                "base_nEdges": 100,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 40,
+                "vertices": [
+                             [ 270,   0],
+                             [ 305,  10],
+                             [ 330,  35],
+                             [ 275,  25]
+                            ],
+                "base_nEdges": 84,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 41,
+                "vertices": [
+                             [ 205,   0],
+                             [ 250,   0],
+                             [ 255,  25],
+                             [ 190,  20]
+                            ],
+                "base_nEdges": 140,
+                "monthly": 0,
+                "handicap": 0
+            },
+            {
+                "number": 42,
+                "vertices": [
+                             [ 162,   0],
+                             [ 190,   0],
+                             [ 180,  20],
+                             [ 160,  20]
+                            ],
+                "base_nEdges": 30,
+                "monthly": 0,
+                "handicap": 0
+            }
         ]
     }
 

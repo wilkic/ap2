@@ -123,7 +123,10 @@ class Spot:
         self.ffname = os.path.join(imdir,fname)
         if not os.path.exists(imdir):
             os.makedirs(imdir)
-        imwrite(self.ffname,self.image)
+        try:
+            imwrite(self.ffname,self.image)
+        except:
+            self.faultyCamera = True
 
         # If monthly, nothing to do
         if self.monthly:

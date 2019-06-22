@@ -160,7 +160,7 @@
                              [  40, 224]
                             ],
                 "base_nEdges": 450,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             }
         ]
@@ -180,7 +180,7 @@
                              [ 370, 224]
                             ],
                 "base_nEdges": 60,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             },
             {
@@ -192,7 +192,7 @@
                              [  90, 224]
                             ],
                 "base_nEdges": 380,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             },
             {
@@ -204,7 +204,7 @@
                              [   0, 224]
                             ],
                 "base_nEdges": 100,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             }
         ]
@@ -406,7 +406,7 @@
                             ],
                 "base_nEdges": 3200,
                 "monthly": 0,
-                "handicap": 0
+                "handicap": 1
             },
             {
                 "number": 28,
@@ -419,7 +419,7 @@
                             ],
                 "base_nEdges": 2100,
                 "monthly": 0,
-                "handicap": 0
+                "handicap": 1
             }
         ]
     },
@@ -678,7 +678,7 @@
                              [ 105, 224]
                             ],
                 "base_nEdges": 100,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             },
             {
@@ -690,7 +690,7 @@
                              [ 275,  25]
                             ],
                 "base_nEdges": 84,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             },
             {
@@ -702,7 +702,7 @@
                              [ 190,  20]
                             ],
                 "base_nEdges": 140,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             },
             {
@@ -714,7 +714,7 @@
                              [ 160,  20]
                             ],
                 "base_nEdges": 30,
-                "monthly": 0,
+                "monthly": 1,
                 "handicap": 0
             }
         ]

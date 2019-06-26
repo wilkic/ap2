@@ -5,6 +5,7 @@ import os, sys
 import re
 sys.path.append('..')
 from json import load as jl
+import ipdb
 
 
 def get_spot_data(log_dir,plot_spots=None):
@@ -16,8 +17,6 @@ def get_spot_data(log_dir,plot_spots=None):
         break
 
     for s in f:
-        #fname = 'spot' + str(s) + '.log'
-        #ffname = os.path.join(log_dir,fname)
         ffname = os.path.join(log_dir,s)
         ft = os.path.splitext(s)
         sn = int( ft[0][4:] )
@@ -54,20 +53,22 @@ def get_spot_data(log_dir,plot_spots=None):
 import matplotlib.pyplot as plt
 import numpy as np
 
-plot_spots = range(1,23)
+
+plot_spots = range(1,50)
 tmin = -24
 tmax = 0
 
-#fdir = os.path.expanduser('~/work/ggp/bpark/catch_output/spot_logs/')
-fdir = os.path.expanduser('~/work/ggp/bpark/archive/0316/spot_logs/')
+fdir = os.path.expanduser('~/work/ap2/archive/0625/spot_logs/')
 
 config_fname = '../../cfg/cam_config.json'
 
 spots = get_spot_data(fdir,plot_spots)
 
+
 # Read config file 
 with open(config_fname) as f:
     camConfig = jl(f)
+
 
 spot_edges = {}
 
@@ -76,13 +77,17 @@ for c,cam in camConfig.iteritems():
     for s in sl:
         sn = s['number']
         spot_edges[sn] = s['base_nEdges']
+        print 'spot%d base_nEdges = %d' % (s['number'],s['base_nEdges'])
 
 
 i = 1
 for s in spots:
    
+    print 'checking spot %d' % s['num']
+
     if 'plot_spots' in locals():
         if s['num'] not in plot_spots:
+            print '     skipping spot %d' % s['num']
             continue
 
     time = np.asarray(s['ts'])
@@ -92,7 +97,6 @@ for s in spots:
 
     edgelim = spot_edges[s['num']]
     nes = np.asarray( s['nEdges'] )
-    
     
     dname = 'pics'
     if not os.path.exists(dname):
@@ -114,6 +118,7 @@ for s in spots:
     #plt.waitforbuttonpress(timeout=-1)
 
     i += 1
+
 
 plt.figure()
 plt.close()

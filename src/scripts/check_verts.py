@@ -15,11 +15,10 @@ import ipdb
 plt.close("all")
 
 def onclick(event):
-    print('button=%d, x=%d, y=%d, xdata=%f, ydata=%f' %
-          (event.button, event.x, event.y, event.xdata, event.ydata))
-
-
-spotNumbers = range(1,23)
+#    print('button=%d, x=%d, y=%d, xdata=%f, ydata=%f' %
+#          (event.button, event.x, event.y, event.xdata, event.ydata))
+    print('[ %f, %f],' %
+          (event.xdata, event.ydata))
 
 
 from json import load as jl
@@ -28,11 +27,11 @@ config_fname = '../../cfg/cam_config.json'
 with open(config_fname) as f:
     cams = jl(f)
 
-camera = cams['cam3']
+camera = cams['cam10']
 
 _plot = True
 
-fname = camera['im_full_path']
+fname = camera['local_im_full_path']
 
 im = cv2.imread(fname)
 
@@ -61,9 +60,6 @@ plt.show()
 
 
 for spot in camera['spots']:
-    
-#    if spot['number'] != 38:
-#        continue
     
     verts = np.array(spot['vertices']).astype('int32')
     

@@ -48,7 +48,7 @@ class Spot:
         self.timeOccupied = 0
         self.occupationStartTime = 0
         self.occupationEndTime = 0
-        self.occupationThresh = 0
+        self.occupationThresh = 180
         self.violation = 0
         self.failedDetection = 0
 

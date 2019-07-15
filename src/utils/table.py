@@ -63,7 +63,7 @@ def write( spots, site_dir=None, dev_mode=False ):
         # -- before marked as violating.
         # -- Which is NOT what we want to indicate when
         # -- presenting the number of spots available
-        occupied = spot.timeOccupied > 0
+        occupied = spot.occupied
         deduct = occupied or spot.monthly
         deduct = deduct or spot.faultyCamera
         deduct = deduct or spot.handicap
@@ -74,7 +74,7 @@ def write( spots, site_dir=None, dev_mode=False ):
         rcolor = '#FFFFFF'
 
         # Black out if camera is failed
-        if spot.faultyCamera:
+        if spot.faultyCamera or spot.paid == -1000:
             rcolor = '#808080'
 
         if spot.violation:
@@ -83,8 +83,12 @@ def write( spots, site_dir=None, dev_mode=False ):
             rcolor = '#FF7F00'
         elif spot.monthly:
             rcolor = '#0000FF'
-        elif spot.paid:
+        elif spot.paid == 1:
             rcolor = '#00FF00'
+        elif spot.paid == -1:
+            rcolor = '#FC0FC0'
+        elif spot.paid == -2:
+            rcolor = '#8B4513'
         elif spot.handicap:
             rcolor = '#FFFF00'
 
@@ -125,9 +129,21 @@ def write( spots, site_dir=None, dev_mode=False ):
         row += '</tr>'
         tabHtml += row
         
-        # Only populate subtable with what's certain cases
+
+        ### PAID TABLE
+        
+        # Only show paid or violators on paid table
         showMe = spot.paid == 1 or spot.violation
+        
+        # Don't show monthlies on paid table
         dontShowMe = spot.monthly
+
+        # If the Payment API is broken, blow up the paid page
+        if spot.paid < 0:
+            showMe = True
+            donShowMe = False
+
+        # Only populate subtable with what's certain cases
         if showMe and not dontShowMe:
             ptabHtml += row
 

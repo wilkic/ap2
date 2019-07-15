@@ -4,6 +4,7 @@ from utils.Spot import Spot
 from utils.Cam import Cam as Camera
 from utils.Payment import Payment
 from utils.notifications import send_msg as sm
+from utils.Shift import determineEnforcers
 import utils.dataRecording as log
 import utils.table as table
 from json import load as jl
@@ -14,6 +15,9 @@ import traceback
 from sys import exit as quit
 
 from copy import copy as copy
+
+import ipdb
+
 
 ##########################################
 ##########################################
@@ -29,11 +33,28 @@ violationThresh = 1200
 
 config_fname = '../cfg/cam_config.json'
 
-toForce = ['test@test.com']
+#toForce = ['test@test.com']
+toForce = [
+    {'contact'  : 'test0@test.com',
+     'shift'    : [0,24],
+     'workdays' : [0, 1, 2, 3, 4]
+    },
+    {'contact': 'test1@test.com',
+     'shift'  : [7,17],
+     'workdays' : [0, 1, 2, 3, 4, 5, 6, 7]
+    },
+    {'contact': 'test2@test.com',
+     'shift'  : [20,5],
+     'workdays' : [7, 8]
+    }
+]
 toErr = ['test@test.com']
-toSpam = ['test@test.com']
 
+# Write to local dirs
 dev_mode = True
+
+# Don't even have cams yet
+newb_mode = False
 
 if dev_mode:
     #data_dir = os.getcwd()
@@ -62,7 +83,7 @@ with open(config_fname) as f:
 # Initialize the cameras (and spot info) from config
 cams = {}
 for c, cam in camConfig.iteritems():
-    tc = Camera( spots, cam )
+    tc = Camera( spots, cam, dev_mode )
     cams[cam['number']] = tc
 
 
@@ -114,6 +135,10 @@ while True:
 
         now = time.time()
         
+        # Get enforcers that are on shift (for notifications)
+        sendForce = []
+        determineEnforcers( toForce, sendForce )
+
         # Update spots info from cameras
         for c, cam in cams.iteritems():
             cam.analyze(spots)
@@ -126,8 +151,9 @@ while True:
         payment.update(spots)
         
         # Determine violation
-        for s, spot in spots.iteritems():
-            spot.update_status( toForce, violationThresh, cd, vd, ud )
+        if not newb_mode: 
+            for s, spot in spots.iteritems():
+                spot.update_status( sendForce, toErr, violationThresh, cd, vd, ud )
         
         # Update table
         table.write(spots,site_dir,dev_mode)

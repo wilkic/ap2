@@ -133,13 +133,14 @@ def send_msg_with_jpg( subject, message, fname, recipients, pwd=None  ):
         srvDict['server'].sendmail( srvDict['sender'], 
                                     recipients,
                                     msg.as_string() )
-    except (smtplib.SMTPDataError, smtplib.SMTPServerDisconnected) as e:
-        sys.stderr.write("""
+    except (smtplib.SMTPDataError, smtplib.SMTPServerDisconnected, smtplib.SMTPRecipientsRefused) as e:
+        stderr.write("""
         Warning: 
         %s
         
         was caught while trying to notify of:
-         %s""" % (e,message))
+         %s
+        """ % (str(e),message))
     
     # Close it out, and get out
     srvDict['server'].close()

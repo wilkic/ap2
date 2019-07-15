@@ -48,7 +48,7 @@ class Spot:
         self.timeOccupied = 0
         self.occupationStartTime = 0
         self.occupationEndTime = 0
-        self.occupationThresh = 180
+        self.occupationThresh = 0
         self.violation = 0
         self.failedDetection = 0
 
@@ -94,10 +94,12 @@ class Spot:
         elif self.occupied:
             self.occupationEndTime = now
             self.occupied = False
+            self.timeOccupied = 0
         
         # Was not occupied, not present
         else:
             self.occupied = False
+            self.timeOccupied = 0
             
         
     def timePresent( self, now ):
@@ -116,7 +118,7 @@ class Spot:
         return self.nEdges > self.base_nEdges
 
 
-    def update_status( self, to, freeTime, imdir='.', vdir='.', udir='.' ):
+    def update_status( self, toForce, toErr, freeTime, imdir='.', vdir='.', udir='.' ):
         
         # Write spot image to directory
         fname = 'spot%d.jpg' % self.number
@@ -153,7 +155,7 @@ class Spot:
                 %s
                 Spot %d in VIOLATION
                 """ % (time.asctime(lt), self.number)
-                notify.send_msg_with_jpg( sub, msg, send_image, to )
+                notify.send_msg_with_jpg( sub, msg, send_image, toForce )
         else:
             self.violation = False
             
@@ -184,7 +186,7 @@ class Spot:
                         Spot %d Detection Failed, or ...
                         Person left spot within pay period
                         """ % (pss, self.number)
-                        notify.send_msg_with_jpg( sub, msg, send_image, to )
+                        notify.send_msg_with_jpg( sub, msg, send_image, toErr )
                 else:
                     self.failedDetection = False
             else:

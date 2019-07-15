@@ -1,6 +1,7 @@
 import cv2
 from numpy import zeros, where, shape, array
 from files import parse_ts
+import datetime as dtime
 
 ###################
 ###################
@@ -15,14 +16,18 @@ class Cam:
     edgeLimLo = 100
     edgeLimHi = 200
     
-    def __init__(self, s, cams):
-        self.init( s, cams )
+    def __init__(self, s, cams, dev ):
+        self.init( s, cams, dev )
         return
 
-    def init( self, sl, cam_dict ):
+    def init( self, sl, cam_dict, dev ):
         self.number = cam_dict['number']
-        self.imageLocation = cam_dict['im_full_path']
-        self.tsLocation = cam_dict['ts_full_path']
+        if dev:
+            self.imageLocation = cam_dict['local_im_full_path']
+            self.tsLocation = cam_dict['local_ts_full_path']
+        else:
+            self.imageLocation = cam_dict['im_full_path']
+            self.tsLocation = cam_dict['ts_full_path']
         self.spots = []
         for s in cam_dict['spots']:
             
@@ -41,15 +46,21 @@ class Cam:
         
         if image is None:
             image = self.imageLocation
-
+        
 	# Allow for image to be a filename or CV2 object
 	if isinstance(image, basestring):
-	    im = cv2.imread(image)
+            try:
+                im = cv2.imread(image)
+            except:
+                im = None
 	else:
 	    im = image
         
         # If the image is empty, do nothing
         if im is None:
+            now = dtime.datetime.now()
+            print "%s" % now.ctime()
+            print "Empty image or failed imread: %s" % self.imageLocation
             return
 
         # Allow for timestamp to be a filename or value

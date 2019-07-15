@@ -7,7 +7,8 @@ from os.path import exists, dirname
 from os import makedirs as mkdir
 
 class Payment:
-    nFails = 0
+    nApiFails = 0
+    nJsFails = 0
     url = 'https://nforce.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
     usr = ''
     pwd = ''
@@ -20,7 +21,7 @@ class Payment:
         self.pwd = apicfg['pwd']
         self.usr = apicfg['usr']
         self.url = apicfg['url']
-        self.notification_reception = to
+        self.notification_receiver = to
 
 
     def update( self, spots ):
@@ -31,42 +32,76 @@ class Payment:
                 resp = requests.get(self.url,
                                     auth=(self.usr,self.pwd),
                                     verify=True)
+                
+                # Success means no failures
+                self.nApiFails = 0
+
                 break
             except Exception, e:
                 i += 1
                 print 'BAD NEWS PARKMOBILE!'
                 print 'Error number %d' % (i)
+                print "Exception: \n%s" % str(e)
                 if i==5:
                     msg = """
                     %s
                     Park Mobile API is not responding!
-                    """ % time.asctime()
-                    sm('Error',msg,to)
-                    nFails += 1
-                    if nFails == 5:
-                        raise
+                    Error:
+                    %s
+                    """ % ( time.asctime(), str(e) )
+                    sm('Error',msg,self.notification_receiver)
+                    self.nApiFails += 1
+                    if self.nApiFails > 5:
+                        self.bad(spots,'API')
+                        resp = None
+                        #raise
+                    break
 
         # Populate spots based on response
-        if resp.status_code != 404:
-            try:
-                # Read data
-                data = resp.json()
-                
-                # Log it
-                if not exists(dirname(self.log)):
-                    mkdir(dirname(self.log))    
-                with open(self.log,'a') as out:
-                    print >> out, time.asctime()
-                    pp( data, stream=out )
-                
-                # Write it to spot object
-                self.assign( data, spots )
+        if (resp is not None) and (resp.status_code != 404):
+            i = 0
+            while True:
+                try:
+                    # Read data
+                    data = resp.json()
+                    
+                    # Log it
+                    if not exists(dirname(self.log)):
+                        mkdir(dirname(self.log))    
+                    with open(self.log,'a') as out:
+                        print >> out, time.asctime()
+                        pp( data, stream=out )
+                    
+                    # Write it to spot object
+                    self.assign( data, spots )
+                    
+                    # Success means no failures
+                    self.nJsFails = 0
 
-            except Exception, e:
-                print "PM API returning crap JSON?"
-                print "Exception: \n%s" % str(e)
-                print "Response: \n%s" % resp.text
+                    # Successful read, stop trying
+                    break
 
+                except Exception, e:
+                    print "PM API returning crap JSON?"
+                    print "Time: %s" % time.asctime()
+                    print "Exception: \n%s" % str(e)
+                    print "Response: \n%s" % resp.text
+                    
+                    i += 1
+                    if i==5:
+                        msg = """
+                        Park Mobile API returning crap!
+                        Time: %s
+                        Exception: %s
+                        Response: %s
+                        """ % ( time.asctime(), str(e), resp.text )
+                        sm('Error',msg,self.notification_receiver)
+                        self.nJsFails += 1
+                        if self.nJsFails > 5:
+                            self.bad(spots,'CRAP')
+                            #raise
+                        break
+        
         return
 
 
@@ -112,4 +147,15 @@ class Payment:
                     spot.paid = 0
 
         return
+
+    def bad( self, spots, flavor ):
+        for s,spot in spots.iteritems():
+            if flavor is 'API':
+                spot.paid = -1
+            elif flavor is 'CRAP':
+                spot.paid = -2
+            else:
+                spot.paid = -1000
+
+        
 

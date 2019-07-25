@@ -61,7 +61,7 @@ if dev_mode:
     data_dir = '/home/c/work/ap2/catch_output/'
     site_dir = '.'
 else:
-    data_dir = '/mnt/data/ap2/catch_output/'
+    data_dir = '/mnt/data/catch/ap2/catch_output/'
     site_dir = '/var/www/html/ap2/'
 
 os.environ['TZ'] = 'US/Eastern'

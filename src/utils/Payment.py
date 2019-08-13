@@ -108,10 +108,19 @@ class Payment:
 
 
     def assign( self, data, spots ):
+        
+        # Set all spots as unpaid
+        # App only returns info for paid spots
+        for sn in spots:
+            spots[ sn ].paid = 0
+
+        # Check payments (if exist)
         if 'parkingRights' in data:
+            
+            # 
             paid = []
             for i in data['parkingRights']:
-                
+
                 # Get space number
                 sn = int( i['spaceNumber'] )
 

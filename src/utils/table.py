@@ -10,7 +10,7 @@ def write( spots, site_dir=None, dev_mode=False ):
         site_dir = os.getcwd()
 
     # Get/Write out the current time for easy comparison
-    currentTime = time.strftime("%Y-%m-%dT%H:%M:%S")
+    currentTime = time.asctime()
     
     # Put the data in a table
     tabHtml = """

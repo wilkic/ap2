@@ -9,6 +9,9 @@ def write( spots, site_dir=None, dev_mode=False ):
     if site_dir is None:
         site_dir = os.getcwd()
 
+    # Get/Write out the current time for easy comparison
+    currentTime = time.strftime("%Y-%m-%dT%H:%M:%S")
+    
     # Put the data in a table
     tabHtml = """
     <html>
@@ -33,19 +36,15 @@ def write( spots, site_dir=None, dev_mode=False ):
               font-size: 100%;
             }
             </style>
-        </head>"""
+        </head>
+        <table border="1" class="sortable">"""
 
-    currentTime = time.strftime("%Y-%m-%dT%H:%M:%S")
-    tabHtml += "<p>" + currentTime + "</p"
-    
-    tabHtml += """
-    <table border="1" class="sortable">
-    """
 
     tabHtml += ("<tr><th>Space Number</th>"
                     "<th>Occupied</th>"
                     "<th>Time Present</th>"
                     "<th>Paid</th>"
+                    "<th>Current Time</th>"
                     "<th>Paid Start Time</th>"
                     "<th>Paid End Time</th>"
                     "<th>License Number</th>"
@@ -107,6 +106,7 @@ def write( spots, site_dir=None, dev_mode=False ):
         occCell = '<td> ' + str(occupied) + '</td>'
         presCell = '<td> ' + str(spot.tPresent) + '</td>'
         paidCell = '<td> ' + str(spot.paid) + '</td>'
+        currentTimeCell = '<td> ' + currentTime + '</td>'
         if spot.payStartTime:
             pst_lt = time.localtime(spot.payStartTime)
             pst_str = time.asctime(pst_lt)
@@ -128,7 +128,7 @@ def write( spots, site_dir=None, dev_mode=False ):
         oetCell = '<td> ' + time.asctime(oet_lt) + '</td>'
         row += spaceCell 
         row = row + occCell + presCell + paidCell
-        row = row + pstCell + petCell
+        row = row + currentTimeCell + pstCell + petCell
         row = row + lpnCell + lpsCell
         row += mnthCell
         row = row + ostCell + oetCell

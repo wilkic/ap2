@@ -33,8 +33,14 @@ def write( spots, site_dir=None, dev_mode=False ):
               font-size: 100%;
             }
             </style>
-        </head>
-        <table border="1" class="sortable">"""
+        </head>"""
+
+    currentTime = time.strftime("%Y-%m-%dT%H:%M:%S")
+    tabHtml += "<p>" + currentTime + "</p"
+    
+    tabHtml += """
+    <table border="1" class="sortable">
+    """
 
     tabHtml += ("<tr><th>Space Number</th>"
                     "<th>Occupied</th>"

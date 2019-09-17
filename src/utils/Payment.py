@@ -145,6 +145,7 @@ class Payment:
                 
                 # Mark as paid if currently within paid window
                 now = time.time()
+
                 if now > spots[sn].payStartTime:
                     
                     if now < spots[sn].payEndTime:

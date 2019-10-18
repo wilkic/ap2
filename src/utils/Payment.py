@@ -9,7 +9,7 @@ from os import makedirs as mkdir
 class Payment:
     nApiFails = 0
     nJsFails = 0
-    url = 'https://nforce.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
+    url = ''
     usr = ''
     pwd = ''
     log = ''
@@ -27,6 +27,7 @@ class Payment:
     def update( self, spots ):
 
         i = 0
+        resp = None
         while True:
             try:
                 resp = requests.get(self.url,

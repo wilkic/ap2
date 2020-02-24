@@ -1,5 +1,5 @@
 {
-    "url": "https://nforce.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json",
-    "usr": "ws_goodspeedcapi",
-    "pwd": "x2warEya"
+    "url": "https://api.parkmobile.us/nforceapi/parkingrights/zones/1/9146?format=json",
+    "usr": "ws_goodspeedavalon",
+    "pwd": "7rEBrA8t"
 }

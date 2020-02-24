@@ -27,7 +27,7 @@ import ipdb
 sleepytime = 300
 
 # Spot numbers is a list of ints
-spotNumbers = range(1,50)
+spotNumbers = range(1,150)
 
 violationThresh = 1200
 
@@ -54,15 +54,15 @@ toErr = ['test@test.com']
 dev_mode = True
 
 # Don't even have cams yet
-newb_mode = False
+newb_mode = True
 
 if dev_mode:
     #data_dir = os.getcwd()
-    data_dir = '/home/c/work/ap2/catch_output/'
+    data_dir = '/home/c/gsp/copi/catch_output/'
     site_dir = '.'
 else:
-    data_dir = '/mnt/data/catch/ap2/catch_output/'
-    site_dir = '/var/www/html/ap2/'
+    data_dir = '/mnt/data/catch/copi/catch_output/'
+    site_dir = '/var/www/html/copi/'
 
 os.environ['TZ'] = 'US/Eastern'
 

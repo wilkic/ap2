@@ -57,6 +57,10 @@ class Payment:
                         resp = None
                         #raise
                     break
+        
+        # If returns 401 then no spots are paid
+        if resp.status_code == 401:
+            return
 
         # Populate spots based on response
         if (resp is not None) and (resp.status_code != 404):

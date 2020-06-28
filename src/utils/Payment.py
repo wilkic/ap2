@@ -12,6 +12,7 @@ class Payment:
     url = ''
     usr = ''
     pwd = ''
+    key = ''
     log = ''
     notification_reception = ''
 
@@ -21,6 +22,7 @@ class Payment:
         self.pwd = apicfg['pwd']
         self.usr = apicfg['usr']
         self.url = apicfg['url']
+        self.key = apicfg['key']
         self.notification_receiver = to
 
 
@@ -28,10 +30,13 @@ class Payment:
 
         i = 0
         resp = None
+        headers={'x-api-key':self.key,
+                 'Authorization':'api_key'}
         while True:
             try:
                 resp = requests.get(self.url,
                                     auth=(self.usr,self.pwd),
+                                    headers=headers,
                                     verify=True)
                 
                 # Success means no failures
